@@ -14,7 +14,7 @@ export default function Contact() {
             </p>
             <h2 id="contact-heading">Have something<br /><span>worth building?</span></h2>
             <p className="contact-description">
-              I’m open to conversations about collaborations, internships, and projects that make a useful difference.
+              I’m open to internship opportunities and collaborations where I can contribute across the stack and keep learning by building.
             </p>
             <a
               className="button button-primary contact-cta"

@@ -20,10 +20,10 @@ export default function About() {
         </Reveal>
         <Reveal className="about-copy" delay={90}>
           <p>
-            I’m a BCA student at Jain University in Bengaluru, learning full-stack development by making things that people can actually use.
+            I’m a BCA student at Jain University in Bengaluru, focused on full-stack development. I like shaping useful products from the interface through the API and the data behind it.
           </p>
           <p>
-            My interests span web development, AI applications, and cybersecurity. I enjoy exploring a problem, building a thoughtful first version, and improving it with every iteration.
+            My projects explore practical web applications, AI integrations, and security tooling. I value clear problem-solving, thoughtful implementation, and learning from each build.
           </p>
           <div className="about-education">
             <span className="about-education__rule" aria-hidden="true" />

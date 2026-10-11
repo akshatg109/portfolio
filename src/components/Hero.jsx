@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow hero-eyebrow">
             <span className="status-dot" aria-hidden="true" />
-            DEVELOPER · AI BUILDER · LIFELONG LEARNER
+            FULL-STACK DEVELOPER · OPEN TO INTERNSHIPS
           </p>
           <h1 id="hero-title" className="hero-title" aria-label="Building things for the next era.">
             <BlurText
@@ -45,7 +45,7 @@ export default function Hero() {
             />
           </h1>
           <p className="hero-intro">
-            I’m Akshat Gupta, a developer exploring full-stack development and AI. I enjoy turning ideas into useful digital experiences and learning by building.
+            I’m Akshat Gupta, a BCA student focused on full-stack development. I build useful web applications across interfaces, backend services, and data—and I’m open to internship opportunities.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#projects">
