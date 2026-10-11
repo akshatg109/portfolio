@@ -16,7 +16,7 @@ Create a production build with `npm run build` and serve it locally with `npm ru
 - Edit project descriptions, verified links, and technologies in `src/data/projects.js`.
 - Edit skills and achievements in `src/data/skills.js` and `src/data/achievements.js`.
 - Update the contact details in `src/data/contact.js` if they change.
-- No resume or verified certifications were present, so neither is advertised.
+- Replace `public/resume.pdf` when the downloadable résumé changes. No verified certifications are advertised.
 
 JalWatch has no public repository or verified technology details in the supplied workspace, so its card has no source/demo link or stack claim. Cura is labeled as a hackathon MVP and links to Akshat's public fork. AI Fitness Coach links to the public repository where Akshat is listed as a contributor.
 

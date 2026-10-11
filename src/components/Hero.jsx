@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, MapPin } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Download, MapPin } from 'lucide-react'
 import BlurText from './BlurText.jsx'
 import DarkVeil from './DarkVeil.jsx'
 
@@ -53,6 +53,14 @@ export default function Hero() {
             </a>
             <a className="button button-quiet" href="#contact">
               Get in touch <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+            <a
+              className="button button-quiet"
+              href="/resume.pdf"
+              download="Akshat-Gupta-Resume.pdf"
+              aria-label="Download Akshat Gupta’s résumé as a PDF"
+            >
+              Download résumé <Download size={15} aria-hidden="true" />
             </a>
           </div>
           <div className="hero-meta">

@@ -1,7 +1,7 @@
 export const skillGroups = [
   {
     title: 'Programming',
-    items: ['C', 'JavaScript', 'TypeScript', 'Python'],
+    items: ['C', 'Java', 'JavaScript', 'TypeScript', 'Python'],
   },
   {
     title: 'Frontend',
