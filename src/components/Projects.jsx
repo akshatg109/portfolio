@@ -12,9 +12,9 @@ export default function Projects() {
       <Reveal>
         <SectionHeading
           number="02"
-          eyebrow="Selected projects"
-          title="A few things I’ve been building."
-          description="A mix of shipped work, active builds, and ideas taking shape."
+          eyebrow="Selected project case studies"
+          title="Products, built from idea to interface."
+          description="A selection of full-stack builds across education, security, wellness, and AI. Each card highlights documented product scope, with public links where available."
           titleId="projects-heading"
         />
       </Reveal>

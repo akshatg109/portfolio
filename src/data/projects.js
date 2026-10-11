@@ -7,12 +7,15 @@ export const projects = [
     title: 'AI-Assisted Answer Sheet Evaluator',
     category: 'AI · Education',
     description:
-      'A web app that evaluates student answers with AI-assisted marking and clear, actionable feedback.',
-    tags: ['Python', 'Flask', 'Supabase', 'OpenRouter'],
+      'Evaluates handwritten and printed answer sheets with vision AI, turning uploads into marks and actionable feedback.',
+    highlights: [
+      'Optional answer keys and batch processing for up to 60 sheets',
+      'Downloadable PDF reports and Supabase-backed evaluation history',
+    ],
+    tags: ['Python', 'Flask', 'OpenRouter', 'Qwen3-VL', 'Supabase'],
     art: 'evaluation',
     featured: true,
     links: [
-      { label: 'Live demo', href: 'https://ai-evaluater.onrender.com/' },
       { label: 'Source code', href: 'https://github.com/akshatg109/ai-evaluater' },
     ],
   },
@@ -22,7 +25,11 @@ export const projects = [
     title: 'WebGuard',
     category: 'Security · Web app',
     description:
-      'A defensive security analysis platform for site owners and authorized testers, focused on passive configuration checks and practical remediation guidance.',
+      'A defensive web-security platform for site owners and authorized testers, focused on passive configuration checks and remediation guidance.',
+    highlights: [
+      'Authenticated dashboard with scan history and detailed reports',
+      'Optional AI explanations do not alter deterministic findings or scores',
+    ],
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'FastAPI', 'Python', 'Supabase'],
     art: 'security',
     links: [
@@ -36,6 +43,11 @@ export const projects = [
     category: 'AI · Wellness',
     description:
       'A Flask fitness app with personalized diet and workout guidance, Supabase-backed profiles, and browser-based exercise-form analysis.',
+    highlights: [
+      'Gemini plan generation with a local fallback',
+      'Browser-camera form analysis and live rep counter',
+    ],
+    role: 'Contributor',
     tags: ['Python', 'Flask', 'Supabase', 'Gemini'],
     art: 'fitness',
     links: [
@@ -60,8 +72,12 @@ export const projects = [
     category: 'AI · Wellbeing',
     status: 'Hackathon MVP',
     description:
-      'A voice-first, therapy-informed 3D avatar companion with speech-to-text, AI conversation, and lip-synced voice responses. A guide, not a therapist.',
-    tags: ['Next.js', 'TypeScript', 'OpenRouter', 'Groq', 'ElevenLabs', 'Supabase'],
+      'A voice-first, therapy-informed 3D avatar companion that listens, responds, and speaks with lip-sync. A guide, not a therapist.',
+    highlights: [
+      'Groq speech recognition, streamed OpenRouter chat, and ElevenLabs voice',
+      'Crisis-tier turns use a fixed response rather than generated advice',
+    ],
+    tags: ['Next.js', 'TypeScript', 'Groq Whisper', 'OpenRouter', 'ElevenLabs', 'Supabase'],
     art: 'voice',
     links: [
       { label: 'Source code', href: 'https://github.com/akshatg109/cura' },

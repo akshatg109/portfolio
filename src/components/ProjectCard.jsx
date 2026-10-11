@@ -68,10 +68,17 @@ function ProjectDetails({ project }) {
           <span className="project-featured">Featured project</span>
         ) : project.status ? (
           <span className="project-status">{project.status}</span>
+        ) : project.role ? (
+          <span className="project-role">{project.role}</span>
         ) : null}
       </div>
       <h3>{project.title}</h3>
       <p className="project-description">{project.description}</p>
+      {project.highlights?.length > 0 && (
+        <ul className="project-highlights" aria-label={`${project.title} documented features`}>
+          {project.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}
+        </ul>
+      )}
       <ul className="project-tags" aria-label={`${project.title} technologies and focus areas`}>
         {project.tags.map(tag => <li key={tag}>{tag}</li>)}
       </ul>
