@@ -100,7 +100,7 @@ export default function Hero() {
 
         </div>
 
-        <a className="hero__scroll" href="#about">
+        <a className="hero__scroll" href="#projects">
           <span>Scroll to explore</span>
           <span className="hero__scroll-line" />
           <ArrowDown size={13} aria-hidden="true" />

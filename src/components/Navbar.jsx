@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 
 const navigation = [
-  { label: 'About', href: '#about' },
   { label: 'Work', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Milestones', href: '#achievements' },

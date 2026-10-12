@@ -9,7 +9,7 @@ export default function Projects() {
     <section className="section projects-section" id="projects" aria-labelledby="projects-heading">
       <Reveal>
         <SectionHeading
-          number="02"
+          number="01"
           eyebrow="Selected project case studies"
           title="Products, built from idea to interface."
           description="A selection of full-stack builds across education, security, wellness, and AI. Each card highlights documented product scope, with public links where available."

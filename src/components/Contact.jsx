@@ -10,7 +10,7 @@ export default function Contact() {
           <div className="contact-copy">
             <p className="eyebrow section-eyebrow">
               <span className="eyebrow-index">
-                <span aria-hidden="true">[</span>05<span aria-hidden="true">]</span>
+                <span aria-hidden="true">[</span>04<span aria-hidden="true">]</span>
               </span>
               <span className="section-eyebrow__separator" aria-hidden="true">//</span>
               <span>Open to good ideas</span>

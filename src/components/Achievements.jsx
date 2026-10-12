@@ -7,7 +7,7 @@ export default function Achievements() {
     <section className="section achievements-section" id="achievements" aria-labelledby="achievements-heading">
       <Reveal>
         <SectionHeading
-          number="04"
+          number="03"
           eyebrow="Milestones & making"
           title="Built with other people."
           description="A few moments that pushed me to think, collaborate, and make under pressure."

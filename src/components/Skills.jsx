@@ -192,7 +192,7 @@ export default function Skills() {
         <div className="skills-story">
           <Reveal>
             <SectionHeading
-              number="03"
+              number="02"
               eyebrow="Tools of the trade"
               title="What I work with."
               description="From programming fundamentals to modern interfaces and AI integrations, this is the toolkit behind the things I build."

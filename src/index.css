@@ -116,39 +116,6 @@ svg {
   pointer-events: none;
 }
 
-.cursor-aura {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 290px;
-  height: 290px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(171, 145, 255, 0.105) 0%, rgba(132, 114, 217, 0.055) 31%, transparent 70%);
-  opacity: 0;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-  will-change: transform;
-}
-
-.cursor-aura::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 23px;
-  height: 23px;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(205, 192, 255, 0.37);
-  border-radius: 50%;
-  content: '';
-}
-
-.cursor-aura.is-visible {
-  opacity: 1;
-}
-
 .skip-link {
   position: fixed;
   z-index: 110;
@@ -166,7 +133,6 @@ svg {
 }
 
 .eyebrow,
-.micro-label,
 .project-number,
 .project-status,
 .project-role,
@@ -884,76 +850,6 @@ svg {
     opacity 760ms cubic-bezier(0.18, 0.75, 0.26, 1) var(--reveal-delay, 0ms),
     transform 760ms cubic-bezier(0.18, 0.75, 0.26, 1) var(--reveal-delay, 0ms),
     filter 760ms ease var(--reveal-delay, 0ms);
-}
-
-/* About */
-.about-section {
-  padding-top: clamp(96px, 12vw, 165px);
-}
-
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(290px, 0.68fr);
-  gap: clamp(50px, 10vw, 160px);
-  align-items: start;
-}
-
-.about-lede {
-  max-width: 680px;
-  margin: 0;
-  color: #e3dfeb;
-  font-size: clamp(29px, 4.2vw, 55px);
-  font-weight: 550;
-  letter-spacing: -0.065em;
-  line-height: 1.2;
-}
-
-.about-lede span {
-  color: var(--violet);
-}
-
-.about-copy {
-  padding-top: 5px;
-}
-
-.about-copy > p {
-  margin: 0 0 17px;
-  color: #a6a2af;
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.about-education {
-  display: flex;
-  gap: 13px;
-  align-items: flex-start;
-  margin-top: 28px;
-}
-
-.about-education__rule {
-  width: 21px;
-  height: 1px;
-  flex: 0 0 auto;
-  margin-top: 12px;
-  background: var(--cyan);
-}
-
-.micro-label {
-  color: #8c8896;
-  font-size: 7px;
-}
-
-.about-prompt { color: var(--cyan); }
-
-.about-education p {
-  margin: 5px 0 0;
-  color: #d1cdd8;
-  font-size: 11px;
-}
-
-.about-education p span {
-  padding-inline: 4px;
-  color: var(--cyan);
 }
 
 /* Project atlas — intentionally varied, not a row of identical cards */
@@ -2187,7 +2083,6 @@ svg {
   .hero__grid { background-size: 46px 46px; }
 
   .section { padding-block: 79px; }
-  .about-section { padding-top: 86px; }
   .section-heading { margin-bottom: 39px; }
   .section-heading__main { align-items: flex-start; flex-direction: column; gap: 14px; }
   .projects-section .section-heading__main {
@@ -2202,10 +2097,6 @@ svg {
   .project-school__frame { height: 67px; }
   .section-heading h2 { font-size: clamp(36px, 9vw, 56px); }
   .section-heading__description { max-width: 520px; font-size: 11px; }
-  .about-layout { grid-template-columns: 1fr; gap: 26px; }
-  .about-lede { max-width: 580px; font-size: clamp(29px, 8vw, 42px); }
-  .about-copy > p { font-size: 12px; }
-
   .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
   .project-card--feature .project-card__article,
   .project-card--feature-wide .project-card__article { min-height: 100%; }
@@ -2342,10 +2233,6 @@ svg {
 
 @media (hover: hover) and (pointer: fine) {
   .spotlight-card.project-card { cursor: default; }
-}
-
-@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .cursor-aura { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
