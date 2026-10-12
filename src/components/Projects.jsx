@@ -11,8 +11,8 @@ export default function Projects() {
         <SectionHeading
           number="01"
           eyebrow="Selected project case studies"
-          title="Products, built from idea to interface."
-          description="A selection of full-stack builds across education, security, wellness, and AI. Each card highlights documented product scope, with public links where available."
+          title="Selected builds."
+          description="Full-stack projects across AI, education, security, health, and community tools."
           titleId="projects-heading"
           aside={<ProjectSchool />}
         />
@@ -28,9 +28,6 @@ export default function Projects() {
           </Reveal>
         ))}
       </div>
-      <p className="projects-note">
-        Visuals are abstract interpretations, not product screenshots. Links appear only where a public source or demo is available.
-      </p>
     </section>
   )
 }

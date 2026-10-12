@@ -758,19 +758,21 @@ svg {
 
 .projects-section .section-heading__main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
+  grid-template-columns: minmax(0, 1fr) 260px;
   grid-template-areas:
     'title aside'
     'description description';
-  gap: 14px 32px;
+  gap: 9px 28px;
   align-items: center;
 }
 
+.projects-section .section-heading { margin-bottom: 32px; }
+.projects-section .section-eyebrow { margin-bottom: 13px; }
 .projects-section .section-heading__main h2 { grid-area: title; }
 
 .projects-section .section-heading__description {
   grid-area: description;
-  max-width: 720px;
+  max-width: 650px;
   margin: 0;
 }
 
@@ -781,16 +783,16 @@ svg {
 
 .project-school {
   display: flex;
-  width: 190px;
+  width: 260px;
   flex-direction: column;
-  gap: 7px;
+  gap: 5px;
   margin: 0;
   opacity: 0.9;
 }
 
 .project-school__frame {
   position: relative;
-  height: 78px;
+  height: 84px;
   overflow: hidden;
   border-top: 1px solid rgba(143, 226, 220, 0.17);
   border-bottom: 1px solid rgba(188, 166, 255, 0.12);
@@ -812,9 +814,29 @@ svg {
 .project-school__frame::after { right: 0; }
 
 .project-school__canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.project-school__flow {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  color: rgba(143, 226, 220, 0.82);
+  font-family: var(--mono);
+  font-size: 3.4px;
+  line-height: 1;
+  text-align: center;
+  white-space: pre;
+  opacity: 0.52;
 }
 
 .project-school figcaption {
@@ -854,13 +876,13 @@ svg {
 
 /* Project atlas — intentionally varied, not a row of identical cards */
 .projects-section {
-  padding-bottom: clamp(92px, 10vw, 144px);
+  padding-block: clamp(56px, 6vw, 86px);
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
   align-items: stretch;
 }
 
@@ -918,15 +940,15 @@ svg {
 .project-card--feature .project-card__article,
 .project-card--feature-wide .project-card__article {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  min-height: 385px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  min-height: 340px;
 }
 
 .project-art {
   position: relative;
   display: grid;
   min-width: 0;
-  min-height: 205px;
+  min-height: 160px;
   overflow: hidden;
   place-items: center;
   isolation: isolate;
@@ -977,12 +999,6 @@ svg {
   background:
     radial-gradient(ellipse at 59% 42%, rgba(187, 132, 235, 0.15), transparent 48%),
     linear-gradient(145deg, #17101a, #0a0a10);
-}
-
-.project-art--sahaaya {
-  background:
-    radial-gradient(ellipse at 38% 50%, rgba(170, 137, 222, 0.15), transparent 50%),
-    linear-gradient(145deg, #15111b, #0a0b10);
 }
 
 .project-art__topline,
@@ -1182,13 +1198,12 @@ svg {
   display: flex;
   min-width: 0;
   flex-direction: column;
-  padding: 25px 24px 23px;
+  padding: 17px 16px 15px;
 }
 
 .project-card--feature .project-details,
 .project-card--feature-wide .project-details {
-  justify-content: center;
-  padding: clamp(24px, 3vw, 43px);
+  padding: clamp(20px, 2vw, 30px);
 }
 
 .project-details__meta {
@@ -1197,7 +1212,7 @@ svg {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 9px;
 }
 
 .project-number {
@@ -1236,7 +1251,7 @@ svg {
 .project-title {
   margin: 0;
   color: var(--paper);
-  font-size: clamp(22px, 2vw, 30px);
+  font-size: clamp(21px, 1.7vw, 26px);
   font-weight: 620;
   letter-spacing: -0.065em;
   line-height: 1.13;
@@ -1244,22 +1259,22 @@ svg {
 
 .project-card--feature .project-title,
 .project-card--feature-wide .project-title {
-  max-width: 560px;
-  font-size: clamp(27px, 3vw, 43px);
+  max-width: 470px;
+  font-size: clamp(25px, 2.3vw, 35px);
 }
 
 .project-description {
   max-width: 590px;
-  margin: 13px 0 17px;
+  margin: 7px 0 9px;
   color: #a7a3b0;
-  font-size: 11px;
-  line-height: 1.8;
+  font-size: 10px;
+  line-height: 1.7;
 }
 
 .project-highlights {
   display: grid;
-  gap: 7px;
-  margin: 0 0 19px;
+  gap: 4px;
+  margin: 0 0 8px;
   padding: 0;
   list-style: none;
 }
@@ -1268,8 +1283,8 @@ svg {
   position: relative;
   padding-left: 13px;
   color: #c0bbc9;
-  font-size: 9px;
-  line-height: 1.65;
+  font-size: 8px;
+  line-height: 1.55;
 }
 
 .project-highlights li::before {
@@ -1286,18 +1301,18 @@ svg {
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin: auto 0 0;
+  gap: 4px;
+  margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .project-tags li {
-  padding: 4px 6px;
+  padding: 3px 5px;
   border: 1px solid rgba(231, 227, 245, 0.12);
   color: #aaa6b3;
   font-family: var(--mono);
-  font-size: 7px;
+  font-size: 6px;
   line-height: 1.35;
 }
 
@@ -1312,12 +1327,12 @@ svg {
   flex-wrap: wrap;
   gap: 18px;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .project-link {
   display: inline-flex;
-  min-height: 27px;
+  min-height: 24px;
   align-items: center;
   gap: 6px;
   color: #d0cadb;
@@ -1336,18 +1351,11 @@ svg {
 }
 
 .project-link-note {
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   color: #777382;
   font-family: var(--mono);
   font-size: 7px;
   letter-spacing: 0.035em;
-}
-
-.projects-note {
-  margin: 19px 0 0;
-  color: #7f7b89;
-  font-size: 9px;
-  line-height: 1.75;
 }
 
 /* Skills / milestones */
@@ -2007,7 +2015,7 @@ svg {
   .brand-name { font-size: 10px; }
   .hero__main { grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr); }
   .hero__title { font-size: clamp(78px, 12vw, 126px); }
-  .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
   .project-cell--feature,
   .project-cell--feature-wide { grid-column: 1 / -1; }
   .project-cell--aside,
@@ -2015,9 +2023,9 @@ svg {
   .project-card--feature .project-card__article,
   .project-card--feature-wide .project-card__article { grid-template-columns: 1fr; }
   .project-card--feature .project-art,
-  .project-card--feature-wide .project-art { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .project-card--feature-wide .project-art { min-height: 160px; border-right: 0; border-bottom: 1px solid var(--line); }
   .project-card--feature .project-details,
-  .project-card--feature-wide .project-details { padding: 24px; }
+  .project-card--feature-wide .project-details { padding: 20px; }
   .skills-layout { grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 32px; }
   .skills-section .section-heading h2 { font-size: clamp(40px, 5.3vw, 54px); }
   .skills-art-panel__orbit { grid-template-columns: minmax(0, 1fr); gap: 6px; }
@@ -2094,26 +2102,27 @@ svg {
     align-items: center;
   }
   .project-school { width: 148px; }
-  .project-school__frame { height: 67px; }
+  .project-school__frame { height: 58px; }
+  .project-school__flow { font-size: 2.4px; }
   .section-heading h2 { font-size: clamp(36px, 9vw, 56px); }
   .section-heading__description { max-width: 520px; font-size: 11px; }
-  .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+  .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
   .project-card--feature .project-card__article,
-  .project-card--feature-wide .project-card__article { min-height: 100%; }
+  .project-card--feature-wide .project-card__article { min-height: 0; }
   .project-card--feature .project-art,
-  .project-card--feature-wide .project-art { min-height: 205px; }
+  .project-card--feature-wide .project-art { min-height: 160px; }
   .project-card--feature .project-details,
   .project-card--feature-wide .project-details,
   .project-details { padding: 20px 18px; }
   .project-title,
   .project-card--feature .project-title,
   .project-card--feature-wide .project-title { font-size: 23px; }
-  .project-description { margin-block: 10px 14px; font-size: 10px; }
-  .project-highlights { gap: 6px; margin-bottom: 15px; }
+  .project-description { margin-block: 8px 10px; font-size: 10px; }
+  .project-highlights { gap: 4px; margin-bottom: 9px; }
   .project-highlights li { font-size: 8px; }
   .project-tags { gap: 4px; }
   .project-tags li { font-size: 6px; }
-  .project-art { min-height: 170px; }
+  .project-art { min-height: 140px; }
   .project-art__topline,
   .project-art__caption { right: 11px; left: 11px; font-size: 6px; }
   .project-art__topline { top: 12px; }
@@ -2122,10 +2131,9 @@ svg {
   .project-featured,
   .project-status,
   .project-role { font-size: 5px; }
-  .project-links { margin-top: 15px; }
+  .project-links { margin-top: 11px; }
   .project-link { font-size: 9px; }
   .project-link-note { font-size: 6px; }
-  .projects-note { font-size: 8px; }
 
   .skills-layout { grid-template-columns: minmax(0, 1fr); gap: 38px; }
   .skills-section .section-heading { margin-bottom: 22px; }
@@ -2188,7 +2196,8 @@ svg {
   }
   .projects-section .section-heading__aside { justify-self: end; }
   .project-school { width: 164px; }
-  .project-school__frame { height: 62px; }
+  .project-school__frame { height: 58px; }
+  .project-school__flow { font-size: 2.2px; }
   .project-grid { grid-template-columns: minmax(0, 1fr); }
   .skills-category { grid-template-columns: minmax(0, 1fr); gap: 11px; padding-block: 16px; }
   .skills-category__heading { min-height: 28px; }
@@ -2205,16 +2214,16 @@ svg {
   .project-card--feature-wide .project-card__article { grid-template-columns: 1fr; }
   .project-card--feature .project-art,
   .project-card--feature-wide .project-art,
-  .project-art { min-height: 210px; }
+  .project-art { min-height: 132px; }
   .project-card--feature .project-details,
   .project-card--feature-wide .project-details,
-  .project-details { padding: 22px; }
+  .project-details { padding: 18px; }
   .project-title,
   .project-card--feature .project-title,
-  .project-card--feature-wide .project-title { font-size: 27px; }
-  .project-description { font-size: 11px; }
-  .project-highlights li { font-size: 9px; }
-  .project-tags li { font-size: 7px; }
+  .project-card--feature-wide .project-title { font-size: 24px; }
+  .project-description { font-size: 10px; }
+  .project-highlights li { font-size: 8px; }
+  .project-tags li { font-size: 6px; }
   .contact-panel { padding-inline: 19px; }
   .footer-inner { gap: 8px; }
   .footer-inner p { font-size: 7px; }

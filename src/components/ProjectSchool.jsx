@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
+import { Ascii } from 'ascii.rest/react'
+import * as flowField from 'ascii.rest/pieces/flow-field'
 
-const FISH = Array.from({ length: 9 }, (_, index) => ({
+const FISH = Array.from({ length: 15 }, (_, index) => ({
   phase: index * 2.17,
   speed: 0.2 + (index % 4) * 0.035,
   spreadX: 0.18 + (index % 3) * 0.035,
@@ -194,10 +196,16 @@ export default function ProjectSchool() {
   return (
     <figure className="project-school" aria-hidden="true">
       <div className="project-school__frame">
+        <Ascii
+          piece={flowField}
+          options={{ fps: 14 }}
+          className="project-school__flow"
+          label="Animated ASCII currents flowing across a field"
+        />
         <canvas ref={canvasRef} className="project-school__canvas" />
       </div>
       <figcaption>
-        <span>FIELD 02 / CURSOR REACTIVE</span>
+        <span>ASCII / FLOW + FLOCK</span>
         <span>move <i>+</i></span>
       </figcaption>
     </figure>

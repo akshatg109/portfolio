@@ -4,7 +4,6 @@ const studies = {
   fitness: { label: 'PLAN ↔ MOVEMENT', motif: '03 / FITNESS' },
   water: { label: 'REPORT / CONFIRM', motif: '04 / JALWATCH' },
   voice: { label: 'LISTEN → RESPOND', motif: '05 / CURA' },
-  sahaaya: { label: 'VOICE / CONCEPT', motif: '06 / SAHAAYA' },
 }
 
 function StudyDrawing({ art }) {
