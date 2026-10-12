@@ -18,7 +18,9 @@ export default function Achievements() {
         {achievements.map((item, index) => (
           <Reveal key={item.number} delay={index * 65}>
             <article className="achievement-row">
-              <span className="achievement-number">{item.number}</span>
+               <span className="achievement-number">
+                 <span aria-hidden="true">[</span>{item.number}<span aria-hidden="true">]</span>
+               </span>
               <div className="achievement-main">
                 <p className="achievement-type">{item.type}</p>
                 <h3>{item.name}</h3>

@@ -1,5 +1,3 @@
-'use client';
-
 import { motion } from 'motion/react';
 import { useEffect, useRef, useState, useMemo } from 'react';
 
@@ -29,9 +27,13 @@ const BlurText = ({
   as = 'p',
   ...rest
 }) => {
+  const { style: textStyle, ...elementProps } = rest;
   const elements = animateBy === 'words' ? text.split(' ') : text.split('');
-  const [inView, setInView] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [inView, setInView] = useState(() => typeof window === 'undefined');
+  const [reducedMotion, setReducedMotion] = useState(() => (
+    typeof window !== 'undefined'
+    && (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false)
+  ));
   const ref = useRef(null);
 
   useEffect(() => {
@@ -39,9 +41,14 @@ const BlurText = ({
     if (!media) return undefined;
     const updateMotionPreference = () => setReducedMotion(media.matches);
     updateMotionPreference();
-    media.addEventListener?.('change', updateMotionPreference);
 
-    return () => media.removeEventListener?.('change', updateMotionPreference);
+    if (media.addEventListener) media.addEventListener('change', updateMotionPreference);
+    else media.addListener?.(updateMotionPreference);
+
+    return () => {
+      if (media.removeEventListener) media.removeEventListener('change', updateMotionPreference);
+      else media.removeListener?.(updateMotionPreference);
+    };
   }, []);
 
   useEffect(() => {
@@ -91,7 +98,12 @@ const BlurText = ({
   const TextElement = as;
 
   return (
-    <TextElement ref={ref} className={className} style={{ display: 'flex', flexWrap: 'wrap' }} {...rest}>
+    <TextElement
+      ref={ref}
+      className={className}
+      style={{ display: 'flex', flexWrap: 'wrap', ...textStyle }}
+      {...elementProps}
+    >
       {elements.map((segment, index) => {
         const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
@@ -104,8 +116,9 @@ const BlurText = ({
 
         return (
           <motion.span
-            className="inline-block will-change-[transform,filter,opacity]"
+            className="blur-text__segment"
             key={index}
+            style={{ display: 'inline-block', willChange: 'transform, filter, opacity' }}
             initial={reducedMotion ? false : fromSnapshot}
             animate={reducedMotion ? { filter: 'blur(0px)', opacity: 1, y: 0 } : inView ? animateKeyframes : fromSnapshot}
             transition={reducedMotion ? { duration: 0 } : spanTransition}

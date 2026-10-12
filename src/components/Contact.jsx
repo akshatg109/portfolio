@@ -9,7 +9,10 @@ export default function Contact() {
         <div className="contact-panel">
           <div className="contact-copy">
             <p className="eyebrow section-eyebrow">
-              <span className="eyebrow-index">05</span>
+              <span className="eyebrow-index">
+                <span aria-hidden="true">[</span>05<span aria-hidden="true">]</span>
+              </span>
+              <span className="section-eyebrow__separator" aria-hidden="true">//</span>
               <span>Open to good ideas</span>
             </p>
             <h2 id="contact-heading">Have something<br /><span>worth building?</span></h2>
@@ -23,6 +26,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               aria-label="Visit Akshat Gupta on GitHub (opens in a new tab)"
             >
+              <span className="contact-prompt" aria-hidden="true">&gt;_</span>
               Find me on GitHub <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </div>

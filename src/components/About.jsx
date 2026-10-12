@@ -28,7 +28,7 @@ export default function About() {
           <div className="about-education">
             <span className="about-education__rule" aria-hidden="true" />
             <div>
-              <span className="micro-label">CURRENTLY STUDYING</span>
+               <span className="micro-label"><span className="about-prompt" aria-hidden="true">&gt; </span>CURRENTLY STUDYING</span>
               <p>Bachelor of Computer Applications <span>·</span> Jain University</p>
             </div>
           </div>

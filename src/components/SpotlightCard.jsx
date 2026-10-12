@@ -98,9 +98,9 @@ const SpotlightCard = ({
     const noise = grainRef.current;
     const edge = edgeRef.current;
     if (!root || !light || !noise || !edge) return undefined;
-    if (!('IntersectionObserver' in window)) return undefined;
 
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    let reduce = motionQuery?.matches ?? false;
     const state = { x: 0, y: 0, presence: 0, flare: 0, time: Math.random() * 60, pressed: false, visible: true };
     const pointer = { x: 0, y: 0, active: false };
     const drawn = { light: '', edge: '', noise: '' };
@@ -234,11 +234,21 @@ const SpotlightCard = ({
       if (pointer.active || state.presence > 0) wake();
     };
 
-    const observer = new IntersectionObserver(entries => {
-      state.visible = entries.some(entry => entry.isIntersecting);
-      if (state.visible) wake();
-    });
-    observer.observe(root);
+    const observer = 'IntersectionObserver' in window
+      ? new IntersectionObserver(entries => {
+        state.visible = entries.some(entry => entry.isIntersecting);
+        if (state.visible) wake();
+      })
+      : null;
+    observer?.observe(root);
+
+    const onMotionChange = event => {
+      reduce = event.matches;
+      wake();
+    };
+    if (motionQuery?.addEventListener) motionQuery.addEventListener('change', onMotionChange);
+    else motionQuery?.addListener?.(onMotionChange);
+
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
     window.addEventListener('pointercancel', onUp);
@@ -252,7 +262,9 @@ const SpotlightCard = ({
     return () => {
       alive = false;
       cancelAnimationFrame(raf);
-      observer.disconnect();
+      observer?.disconnect();
+      if (motionQuery?.removeEventListener) motionQuery.removeEventListener('change', onMotionChange);
+      else motionQuery?.removeListener?.(onMotionChange);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
       window.removeEventListener('pointercancel', onUp);

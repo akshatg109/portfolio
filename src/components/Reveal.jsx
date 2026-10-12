@@ -2,13 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function Reveal({ children, className = '', delay = 0 }) {
   const ref = useRef(null)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(() => (
+    typeof window === 'undefined'
+    || (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false)
+  ))
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
-    if (reduceMotion || !('IntersectionObserver' in window)) return
-
-    setVisible(false)
+    if (visible) return undefined
+    if (!('IntersectionObserver' in window)) {
+      setVisible(true)
+      return undefined
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -21,7 +25,7 @@ export default function Reveal({ children, className = '', delay = 0 }) {
 
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [])
+  }, [visible])
 
   return (
     <div

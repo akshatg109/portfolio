@@ -1,45 +1,13 @@
 import {
-  Activity,
   ArrowUpRight,
-  AudioLines,
-  FileCheck2,
-  ShieldCheck,
-  Waves,
 } from 'lucide-react'
 import SpotlightCard from './SpotlightCard.jsx'
-
-const artwork = {
-  evaluation: { Icon: FileCheck2, phrase: 'ANSWER → FEEDBACK', index: 'AI / 01' },
-  security: { Icon: ShieldCheck, phrase: 'CONFIGURATION · REMEDIATION', index: 'SECURITY / 02' },
-  fitness: { Icon: Activity, phrase: 'PERSONALIZED MOVEMENT', index: 'WELLNESS / 03' },
-  water: { Icon: Waves, phrase: 'REPORT · CONFIRM · REVIEW', index: 'COMMUNITY / 04' },
-  voice: { Icon: AudioLines, phrase: 'LISTEN · THINK · SPEAK', index: 'VOICE / 05' },
-}
-
-function ProjectArtwork({ art }) {
-  const item = artwork[art]
-  const { Icon } = item
-
-  return (
-    <div className={`project-art project-art--${art}`} aria-hidden="true">
-      <div className="project-art__grid" />
-      <div className="project-art__rings">
-        <span className="project-art__ring project-art__ring--one" />
-        <span className="project-art__ring project-art__ring--two" />
-        <span className="project-art__ring project-art__ring--three" />
-      </div>
-      <div className="project-art__icon"><Icon size={art === 'water' ? 54 : 46} strokeWidth={1.2} /></div>
-      {art === 'water' && <span className="project-art__waterline project-art__waterline--one" />}
-      {art === 'water' && <span className="project-art__waterline project-art__waterline--two" />}
-      {art === 'voice' && <span className="project-art__voice-wave" />}
-      <span className="project-art__index">{item.index}</span>
-      <span className="project-art__phrase">{item.phrase}</span>
-    </div>
-  )
-}
+import ProjectArtwork from './ProjectArtwork.jsx'
 
 function ProjectLinks({ project }) {
-  if (!project.links?.length) return null
+  if (!project.links?.length) {
+    return <p className="project-link-note">No public source or demo linked.</p>
+  }
 
   return (
     <div className="project-links">
@@ -64,15 +32,13 @@ function ProjectDetails({ project }) {
     <div className="project-details">
       <div className="project-details__meta">
         <span className="project-number">{project.number} <span aria-hidden="true">/</span> {project.category}</span>
-        {project.featured ? (
-          <span className="project-featured">Featured project</span>
-        ) : project.status ? (
-          <span className="project-status">{project.status}</span>
-        ) : project.role ? (
-          <span className="project-role">{project.role}</span>
-        ) : null}
+        <div className="project-badges">
+          {project.featured && <span className="project-featured">Featured</span>}
+          {project.status && <span className="project-status">{project.status}</span>}
+          {project.role && <span className="project-role">{project.role}</span>}
+        </div>
       </div>
-      <h3>{project.title}</h3>
+      <h3 className="project-title" id={`project-${project.id}`}>{project.title}</h3>
       <p className="project-description">{project.description}</p>
       {project.highlights?.length > 0 && (
         <ul className="project-highlights" aria-label={`${project.title} documented features`}>
@@ -90,29 +56,41 @@ function ProjectDetails({ project }) {
 export default function ProjectCard({ project }) {
   const featured = project.featured
 
+  const handlePointerMove = event => {
+    if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+
+    const card = event.currentTarget.closest('.project-card')
+    const rect = card.getBoundingClientRect()
+    const x = (event.clientX - rect.left) / rect.width - 0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5
+    card.style.setProperty('--tilt-x', `${-y * 3}deg`)
+    card.style.setProperty('--tilt-y', `${x * 4}deg`)
+  }
+
+  const resetTilt = event => {
+    const card = event.currentTarget.closest('.project-card')
+    card.style.setProperty('--tilt-x', '0deg')
+    card.style.setProperty('--tilt-y', '0deg')
+  }
+
   return (
     <SpotlightCard
-      className={`project-card${featured ? ' project-card--featured' : ''}`}
-      spotlightColor="#b9a4ff"
-      intensity={featured ? 0.13 : 0.11}
-      spotlightSize={featured ? 320 : 250}
-      borderGlow={0.38}
-      proximity={70}
-      smoothing={0.36}
+      className={`project-card project-card--${project.layout ?? 'compact'}${featured ? ' project-card--featured' : ''}`}
+      style={{ '--project-accent': project.accent ?? '#b5a0ff' }}
+      spotlightColor={project.accent ?? '#b5a0ff'}
+      intensity={featured ? 0.27 : 0.2}
+      spotlightSize={featured ? 360 : 260}
+      borderGlow={0.52}
+      proximity={105}
+      smoothing={0.24}
+      ambient={false}
+      grain={0.015}
       theme="dark"
     >
-      <article className="project-card__article">
-        {featured ? (
-          <div className="project-card__feature-layout">
-            <ProjectDetails project={project} />
-            <ProjectArtwork art={project.art} />
-          </div>
-        ) : (
-          <>
-            <ProjectArtwork art={project.art} />
-            <ProjectDetails project={project} />
-          </>
-        )}
+      <article className="project-card__article" onPointerMove={handlePointerMove} onPointerLeave={resetTilt}>
+        <ProjectArtwork art={project.art} number={project.number} />
+        <ProjectDetails project={project} />
       </article>
     </SpotlightCard>
   )

@@ -1,97 +1,109 @@
 import { ArrowDown, ArrowUpRight, Download, MapPin } from 'lucide-react'
 import BlurText from './BlurText.jsx'
-import DarkVeil from './DarkVeil.jsx'
+import TokyoRainBackground from './TokyoRainBackground.jsx'
+
+const entrance = (delay) => ({ '--entrance-delay': `${delay}ms` })
 
 export default function Hero() {
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
-      <div className="hero-atmosphere" aria-hidden="true">
-        <DarkVeil
-          className="hero-dark-veil"
-          color="#8460d8"
-          speed={0.14}
-          flow={0.3}
-          brightness={0.34}
-          glow={0.08}
-          grain={0.015}
-          quality={0.36}
-          dpr={1}
-          opacity={0.32}
-          mouseInteraction={false}
-        />
+      <div className="hero__atmosphere" aria-hidden="true">
+        <TokyoRainBackground />
+        <div className="hero__grid" />
+        <div className="hero__glow" />
       </div>
-      <div className="hero-inner content-shell">
-        <div className="hero-copy">
-          <p className="eyebrow hero-eyebrow">
-            <span className="status-dot" aria-hidden="true" />
-            FULL-STACK DEVELOPER · OPEN TO INTERNSHIPS
-          </p>
-          <h1 id="hero-title" className="hero-title" aria-label="Building things for the next era.">
-            <BlurText
-              as="span"
-              text="Building things"
-              className="hero-title-row"
-              delay={45}
-              stepDuration={0.22}
-              direction="top"
-            />
-            <BlurText
-              as="span"
-              text="for the next era."
-              className="hero-title-row hero-title-row--accent"
-              delay={55}
-              stepDuration={0.22}
-              direction="top"
-            />
-          </h1>
-          <p className="hero-intro">
-            I’m Akshat Gupta, a BCA student focused on full-stack development. I build useful web applications across interfaces, backend services, and data—and I’m open to internship opportunities.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#projects">
-              Explore my work <ArrowDown size={15} aria-hidden="true" />
-            </a>
-            <a className="button button-quiet" href="#contact">
-              Get in touch <ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-            <a
-              className="button button-quiet"
-              href="/resume.pdf"
-              download="Akshat-Gupta-Resume.pdf"
-              aria-label="Download Akshat Gupta’s résumé as a PDF"
-            >
-              Download résumé <Download size={15} aria-hidden="true" />
-            </a>
-          </div>
-          <div className="hero-meta">
-            <span className="hero-meta__location"><MapPin size={14} aria-hidden="true" /> Bengaluru, India</span>
-            <span className="hero-meta__divider" aria-hidden="true" />
-            <span>BCA · Jain University</span>
-          </div>
+
+      <div className="content-shell hero__shell">
+        <div className="hero__topline hero-enter" style={entrance(40)}>
+          <span><i className="hero__status-dot" /> AKSHAT GUPTA / PERSONAL PORTFOLIO</span>
+          <span className="hero__edition">BLR — IN <b>·</b> 2026</span>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="hero-visual__caption hero-visual__caption--top">
-            <span>PERSONAL PORTFOLIO</span>
-            <span>01 / 05</span>
+        <div className="hero__main">
+          <div className="hero__copy">
+            <p className="eyebrow hero__eyebrow hero-enter" style={entrance(100)}>
+              <span>FULL-STACK DEVELOPER</span>
+              <span className="hero__eyebrow-divider">/</span>
+              <span>AI + CYBERSECURITY</span>
+            </p>
+
+            <h1 id="hero-title" className="hero__title" aria-label="Akshat Gupta">
+              <span className="hero__name-line">
+                <BlurText
+                  as="span"
+                  text="AKSHAT"
+                  className="hero__name"
+                  animateBy="chars"
+                  direction="bottom"
+                  delay={29}
+                  stepDuration={0.27}
+                  threshold={0.01}
+                  animationFrom={{ opacity: 0, y: 84, filter: 'blur(15px)' }}
+                  animationTo={[
+                    { opacity: 0.55, y: -8, filter: 'blur(3px)' },
+                    { opacity: 1, y: 0, filter: 'blur(0px)' },
+                  ]}
+                  easing={t => 1 - Math.pow(1 - t, 3)}
+                />
+              </span>
+              <span className="hero__name-line hero__name-line--accent">
+                <BlurText
+                  as="span"
+                  text="GUPTA"
+                  className="hero__name"
+                  animateBy="chars"
+                  direction="bottom"
+                  delay={39}
+                  stepDuration={0.29}
+                  threshold={0.01}
+                  animationFrom={{ opacity: 0, y: 90, filter: 'blur(18px)' }}
+                  animationTo={[
+                    { opacity: 0.5, y: -9, filter: 'blur(3px)' },
+                    { opacity: 1, y: 0, filter: 'blur(0px)' },
+                  ]}
+                  easing={t => 1 - Math.pow(1 - t, 3)}
+                />
+                <span className="hero__name-period" aria-hidden="true">.</span>
+              </span>
+            </h1>
+
+            <p className="hero__tagline hero-enter" style={entrance(510)}>
+              Build<span>.</span> Learn<span>.</span> Improve<span>.</span> Repeat<span>.</span>
+            </p>
+            <p className="hero__intro hero-enter" style={entrance(620)}>
+              BCA student at Jain University, Bengaluru. I build useful software across the stack, with interests in AI applications and cybersecurity.
+            </p>
+
+            <div className="hero__actions hero-enter" style={entrance(735)}>
+              <a className="button button-primary" href="#projects">
+                Explore the work <ArrowDown size={15} aria-hidden="true" />
+              </a>
+              <a className="button button-quiet" href="#contact">
+                Say hello <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a
+                className="button button-quiet hero__resume"
+                href="/resume.pdf"
+                download="Akshat-Gupta-Resume.pdf"
+                aria-label="Download Akshat Gupta’s résumé as a PDF"
+              >
+                Résumé <Download size={14} aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="hero__meta hero-enter" style={entrance(850)}>
+              <span><MapPin size={14} aria-hidden="true" /> Bengaluru, India</span>
+              <span className="hero__meta-rule" />
+              <span>BCA <b>·</b> Jain University</span>
+            </div>
           </div>
-          <div className="hero-emblem">
-            <span className="hero-emblem__orbit hero-emblem__orbit--outer" />
-            <span className="hero-emblem__orbit hero-emblem__orbit--inner" />
-            <span className="hero-emblem__axis hero-emblem__axis--horizontal" />
-            <span className="hero-emblem__axis hero-emblem__axis--vertical" />
-            <span className="hero-emblem__mark">AG</span>
-            <span className="hero-emblem__spark" />
-          </div>
-          <div className="hero-visual__caption hero-visual__caption--bottom">
-            <span>IDEAS INTO INTERFACES</span>
-            <span>BUILD · LEARN · REPEAT</span>
-          </div>
+
         </div>
 
-        <a className="hero-scroll" href="#about">
+        <a className="hero__scroll" href="#about">
           <span>Scroll to explore</span>
-          <ArrowDown size={14} aria-hidden="true" />
+          <span className="hero__scroll-line" />
+          <ArrowDown size={13} aria-hidden="true" />
         </a>
       </div>
     </section>
