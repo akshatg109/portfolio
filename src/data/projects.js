@@ -35,6 +35,7 @@ export const projects = [
       ],
     },
     links: [
+      { label: 'Live demo', href: 'https://ai-evaluater.onrender.com' },
       { label: 'Source code', href: 'https://github.com/akshatg109/ai-evaluater' },
     ],
   },

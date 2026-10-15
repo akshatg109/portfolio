@@ -486,6 +486,11 @@ svg {
   filter: brightness(1.05);
 }
 
+.action-button:active {
+  transform: translateY(0) scale(0.985);
+  filter: brightness(0.97);
+}
+
 .action-button--primary {
   border-color: rgba(174, 238, 245, 0.8);
   background: linear-gradient(115deg, #c2f5f8, #a9d5ff);
@@ -1505,6 +1510,14 @@ svg {
   padding: 13px 14px;
   border: 1px solid var(--line);
   background: rgba(11, 18, 32, 0.55);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.education-line:hover {
+  transform: translateY(-2px);
+  border-color: rgba(118, 228, 239, 0.38);
+  background: rgba(14, 24, 40, 0.72);
+  box-shadow: 0 8px 24px rgba(24, 104, 129, 0.1);
 }
 
 .education-line__icon {
@@ -1627,6 +1640,32 @@ svg {
   gap: 12px;
   padding: 14px 0;
   border-top: 1px solid var(--line);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.mission-entry::before {
+  position: absolute;
+  top: 20px;
+  left: -32px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid rgba(118, 228, 239, 0.4);
+  border-radius: 50%;
+  background: #101a2a;
+  content: '';
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, scale 180ms ease;
+}
+
+.mission-entry:hover {
+  transform: translateX(2px);
+  background: linear-gradient(90deg, rgba(118, 228, 239, 0.035), transparent 76%);
+}
+
+.mission-entry:hover::before {
+  scale: 1.15;
+  border-color: var(--cyan);
+  background: var(--cyan);
+  box-shadow: 0 0 10px rgba(118, 228, 239, 0.38);
 }
 
 .mission-entry__number {
@@ -1699,13 +1738,21 @@ svg {
   padding: 11px 13px;
   border: 1px solid var(--line);
   background: rgba(11, 18, 32, 0.58);
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
-.contact-destination:hover {
-  transform: translateX(3px);
-  border-color: rgba(118, 228, 239, 0.5);
-  background: rgba(17, 31, 48, 0.76);
+.contact-destination:hover,
+.contact-destination:focus-visible {
+  transform: translate3d(3px, -1px, 0);
+  border-color: rgba(118, 228, 239, 0.52);
+  background: rgba(17, 31, 48, 0.78);
+  box-shadow: 0 7px 24px rgba(33, 134, 153, 0.1), inset 0 0 0 1px rgba(118, 228, 239, 0.035);
+}
+
+.contact-destination:active {
+  transform: translate3d(1px, 0, 0);
+  background: rgba(20, 39, 56, 0.88);
+  box-shadow: 0 2px 10px rgba(33, 134, 153, 0.08);
 }
 
 .contact-destination__icon {
@@ -1770,11 +1817,17 @@ svg {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.1em;
-  transition: color 160ms ease;
+  transition: color 160ms ease, transform 160ms ease;
 }
 
-.contact-back:hover {
+.contact-back:hover,
+.contact-back:focus-visible {
   color: var(--cyan);
+}
+
+.contact-back:active {
+  transform: translateY(1px);
+  color: var(--ice);
 }
 
 .mission-strip {
@@ -2295,6 +2348,7 @@ svg {
   }
 
   .mission-log { padding-left: 20px; }
+  .mission-entry::before { left: -24px; }
   .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr); gap: 44px; }
   .mission-strip { min-height: 46px; }
 
@@ -2360,6 +2414,7 @@ svg {
   .skills-catalog { margin-top: 20px; }
   .skills-groups { gap: 11px 13px; }
   .mission-log { padding: 16px 0 7px 17px; }
+  .mission-entry::before { left: -21px; }
   .mission-log__heading h2 { font-size: 22px; }
   .mission-entry { padding-block: 12px; }
   .mission-entry__meta { font-size: 8px; }
