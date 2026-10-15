@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ascii.rest": "^0.4.0",
     "lucide-react": "^0.468.0",
     "motion": "^12.43.0",
     "react": "^19.1.1",

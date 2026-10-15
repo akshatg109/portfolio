@@ -33,9 +33,10 @@ function resolveCommand(value, projects) {
   const command = value.trim().toLowerCase()
 
   if (command === 'help') {
-    return { kind: 'text', text: 'Commands: help · projects · about · contact · open 01' }
+    return { kind: 'text', text: 'Commands: help · projects · about · contact · clear · open 01' }
   }
   if (command === 'projects') return { kind: 'projects' }
+  if (command === 'clear') return { kind: 'clear' }
   if (command === 'about') {
     return { kind: 'text', text: 'Akshat Gupta — BCA student at Jain University, Bengaluru. Full-stack development, AI applications, and defensive cybersecurity.' }
   }
@@ -56,6 +57,7 @@ function resolveCommand(value, projects) {
 export default function TerminalPanel({ projects, onClose, onOpenProject }) {
   const [command, setCommand] = useState('')
   const [history, setHistory] = useState([])
+  const [showWelcome, setShowWelcome] = useState(true)
   const inputRef = useRef(null)
   const outputRef = useRef(null)
   const reduceMotion = useReducedMotion()
@@ -79,6 +81,13 @@ export default function TerminalPanel({ projects, onClose, onOpenProject }) {
     if (!input) return
 
     const response = resolveCommand(input, projects)
+    if (response.kind === 'clear') {
+      setHistory([])
+      setShowWelcome(false)
+      setCommand('')
+      return
+    }
+
     setHistory(previous => [...previous, { id: `${Date.now()}-${previous.length}`, input, response }])
     setCommand('')
 
@@ -107,8 +116,8 @@ export default function TerminalPanel({ projects, onClose, onOpenProject }) {
         <p>Commands are optional. Type <code>help</code>, then press Enter.</p>
       </div>
 
-      <div className="terminal-output" ref={outputRef} role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions">
-        <p className="terminal-welcome"><span>ORBIT/OS</span> session ready. No external service required.</p>
+      <div className="terminal-output" ref={outputRef} role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions removals">
+        {showWelcome && <p className="terminal-welcome"><span>ORBIT/OS</span> session ready. No external service required.</p>}
         {history.map(entry => (
           <div className="terminal-entry" key={entry.id}>
             <p className="terminal-entry__command"><span>akshat@orbit:~$</span> {entry.input}</p>

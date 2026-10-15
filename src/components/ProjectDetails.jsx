@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, CircleDot } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, CircleDot, X } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 
 export default function ProjectDetails({ project, onClose }) {
@@ -9,14 +9,19 @@ export default function ProjectDetails({ project, onClose }) {
       className="project-detail"
       style={{ '--planet-accent': project.accent }}
       aria-labelledby="project-detail-title"
-      initial={reduceMotion ? false : { opacity: 0, y: 12, filter: 'blur(6px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, filter: 'blur(4px)' }}
-      transition={{ duration: reduceMotion ? 0.01 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+      initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.985, filter: 'blur(8px)' }}
+      animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.992, filter: 'blur(4px)' }}
+      transition={{ duration: reduceMotion ? 0.01 : 0.36, ease: [0.22, 1, 0.36, 1] }}
     >
-      <button className="back-to-orbits" type="button" onClick={onClose}>
-        <ArrowLeft size={15} aria-hidden="true" /> BACK TO ORBITS
-      </button>
+      <div className="project-detail__controls">
+        <button className="back-to-orbits" type="button" onClick={onClose}>
+          <ArrowLeft size={15} aria-hidden="true" /> BACK TO ORBITS
+        </button>
+        <button className="project-detail__close" type="button" onClick={onClose} aria-label="Close project details">
+          <X size={16} aria-hidden="true" />
+        </button>
+      </div>
 
       <div className="project-detail__meta">
         <span className="project-detail__number">PROJECT {project.number}</span>

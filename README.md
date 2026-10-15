@@ -22,6 +22,6 @@ Cura is labeled as a hackathon MVP and links to Akshat's public fork. AI Fitness
 
 ## Interface
 
-The planetary scene uses CSS orbital paths, pointer-responsive depth, and the locally bundled `planet` ASCII piece from `ascii.rest`. Its animation respects reduced-motion preferences; the terminal works entirely in the browser and is never required for navigation. Try `help`, `projects`, `about`, `contact`, or `open 01` in the terminal; Escape closes it. Project, skill, achievement, and contact content is maintained in `src/data/`.
+The planetary scene uses CSS-driven elliptical motion, drawn SVG orbit paths, layered parallax stars, and a locally rendered canvas ASCII globe. Motion respects reduced-motion preferences; the terminal works entirely in the browser and is never required for navigation. Try `help`, `projects`, `about`, `contact`, `clear`, or `open 01` in the terminal; Escape closes it. Project, skill, achievement, and contact content is maintained in `src/data/`.
 
 The four planets are original CSS illustrations, not product screenshots. Project metadata, verified links, and planet colors are defined in `src/data/projects.js`.
