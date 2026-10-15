@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">ORBIT — Akshat Gupta’s Developer Universe</title>
+  <desc id="description">Building beyond the ordinary. An interactive portfolio featuring four project planets.</desc>
+  <defs>
+    <radialGradient id="backgroundGlow" cx="78%" cy="47%" r="55%">
+      <stop offset="0" stop-color="#22244b" stop-opacity=".65" />
+      <stop offset=".58" stop-color="#10142a" stop-opacity=".3" />
+      <stop offset="1" stop-color="#050811" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="core" cx="35%" cy="30%" r="72%">
+      <stop offset="0" stop-color="#f0ffff" />
+      <stop offset=".2" stop-color="#8ee5f4" />
+      <stop offset=".5" stop-color="#8d82ff" />
+      <stop offset="1" stop-color="#22214a" />
+    </radialGradient>
+    <radialGradient id="bluePlanet" cx="32%" cy="27%" r="75%">
+      <stop offset="0" stop-color="#e6f4ff" />
+      <stop offset=".35" stop-color="#89bbff" />
+      <stop offset="1" stop-color="#244d91" />
+    </radialGradient>
+    <radialGradient id="cyanPlanet" cx="32%" cy="27%" r="75%">
+      <stop offset="0" stop-color="#e5ffff" />
+      <stop offset=".4" stop-color="#6ee5de" />
+      <stop offset="1" stop-color="#176d7a" />
+    </radialGradient>
+    <radialGradient id="amberPlanet" cx="32%" cy="27%" r="75%">
+      <stop offset="0" stop-color="#fff8e9" />
+      <stop offset=".4" stop-color="#f2b47c" />
+      <stop offset="1" stop-color="#804c3b" />
+    </radialGradient>
+    <radialGradient id="violetPlanet" cx="32%" cy="27%" r="75%">
+      <stop offset="0" stop-color="#f4eaff" />
+      <stop offset=".4" stop-color="#c691ff" />
+      <stop offset="1" stop-color="#554083" />
+    </radialGradient>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+    <pattern id="stars" width="83" height="77" patternUnits="userSpaceOnUse">
+      <circle cx="13" cy="16" r="1" fill="#b7d9ff" opacity=".6" />
+      <circle cx="56" cy="41" r=".7" fill="#9ebdf5" opacity=".42" />
+      <circle cx="30" cy="67" r=".6" fill="#cefaff" opacity=".48" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#050811" />
+  <rect width="1200" height="630" fill="url(#backgroundGlow)" />
+  <rect width="1200" height="630" fill="url(#stars)" opacity=".72" />
+  <path d="M0 0h1200v5H0z" fill="#76e4ef" opacity=".75" />
+
+  <g transform="translate(72 54)">
+    <circle cx="22" cy="22" r="3.7" fill="#aed3ff" />
+    <ellipse cx="22" cy="22" rx="18" ry="9" transform="rotate(-32 22 22)" fill="none" stroke="#aed3ff" stroke-width="1.3" />
+    <circle cx="35" cy="13" r="2.3" fill="#76e4ef" />
+    <text x="53" y="19" fill="#edf5ff" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2">ORBIT</text>
+    <text x="53" y="39" fill="#8092aa" font-family="monospace" font-size="9" letter-spacing="1.4">AKSHAT GUPTA / PORTFOLIO</text>
+  </g>
+  <text x="1128" y="81" fill="#8092aa" font-family="monospace" font-size="10" letter-spacing="1.2" text-anchor="end">PERSONAL DEVELOPER UNIVERSE</text>
+  <path d="M72 122h1056" stroke="#9db4d0" stroke-opacity=".2" />
+
+  <circle cx="81" cy="179" r="4" fill="#76e4ef" />
+  <text x="96" y="183" fill="#a5bad2" font-family="monospace" font-size="11" letter-spacing="1.5">FULL-STACK DEVELOPER / AI BUILDER / CYBERSECURITY ENTHUSIAST</text>
+  <text x="72" y="294" fill="#edf5ff" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-5.5">Building beyond</text>
+  <text x="72" y="378" fill="#edf5ff" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-5.5">the <tspan fill="#a9cfff">ordinary</tspan><tspan fill="#a895ff">.</tspan></text>
+  <text x="76" y="435" fill="#a5b5c9" font-family="Arial, Helvetica, sans-serif" font-size="17">BCA student at Jain University, Bengaluru.</text>
+  <text x="76" y="464" fill="#a5b5c9" font-family="Arial, Helvetica, sans-serif" font-size="15">Full-stack projects, practical AI, and defensive cybersecurity.</text>
+  <path d="M72 529h575" stroke="#9db4d0" stroke-opacity=".2" />
+  <text x="76" y="562" fill="#8092aa" font-family="monospace" font-size="10" letter-spacing="1.2">EXPLORE 04 PROJECT WORLDS</text>
+  <text x="76" y="586" fill="#8092aa" font-family="monospace" font-size="10" letter-spacing="1.2">JAIN UNIVERSITY · BENGALURU, INDIA</text>
+
+  <g fill="none" stroke="#a9cfff" stroke-opacity=".25">
+    <ellipse cx="921" cy="337" rx="255" ry="104" transform="rotate(-17 921 337)" />
+    <ellipse cx="921" cy="337" rx="208" ry="145" transform="rotate(22 921 337)" />
+    <ellipse cx="921" cy="337" rx="164" ry="192" transform="rotate(-9 921 337)" />
+    <ellipse cx="921" cy="337" rx="270" ry="221" transform="rotate(13 921 337)" stroke-dasharray="3 6" />
+  </g>
+  <circle cx="921" cy="337" r="87" fill="#9784ff" opacity=".16" filter="url(#softGlow)" />
+  <circle cx="921" cy="337" r="55" fill="url(#core)" />
+  <circle cx="921" cy="337" r="64" fill="none" stroke="#b8c9ff" stroke-opacity=".28" />
+  <g fill="#e2f8ff" font-family="monospace" font-size="7" opacity=".9" text-anchor="middle">
+    <text x="921" y="318">++++=----::---=++++</text>
+    <text x="921" y="329">###**+=....=+**###</text>
+    <text x="921" y="340">%%%##*+..:+*##%%%</text>
+    <text x="921" y="351">###**+=....=+**###</text>
+    <text x="921" y="362">++++=----::---=++++</text>
+  </g>
+  <circle cx="737" cy="247" r="19" fill="url(#bluePlanet)" stroke="#e2f0ff" stroke-opacity=".7" />
+  <circle cx="1072" cy="451" r="22" fill="url(#cyanPlanet)" stroke="#e2ffff" stroke-opacity=".7" />
+  <circle cx="826" cy="496" r="16" fill="url(#amberPlanet)" stroke="#fff3dc" stroke-opacity=".7" />
+  <circle cx="1110" cy="249" r="18" fill="url(#violetPlanet)" stroke="#f1e4ff" stroke-opacity=".7" />
+  <circle cx="1110" cy="249" r="24" fill="none" stroke="#d9c7ff" stroke-opacity=".42" />
+  <g fill="#d5ecff" opacity=".72">
+    <circle cx="780" cy="331" r="1.4" /><circle cx="1065" cy="188" r="1.2" />
+    <circle cx="1144" cy="371" r="1.2" /><circle cx="876" cy="526" r="1.3" />
+    <circle cx="777" cy="415" r=".9" /><circle cx="1023" cy="233" r=".9" />
+  </g>
+</svg>

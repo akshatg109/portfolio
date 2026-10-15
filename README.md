@@ -1,6 +1,6 @@
-# Akshat Gupta — Developer Portfolio
+# ORBIT — Akshat Gupta’s Developer Universe
 
-A responsive, dark portfolio built with React and Vite.
+A compact, interactive portfolio built with React and Vite. Explore four projects as orbiting planets, open their verified source links, switch between Explore / Profile / Contact, or use the optional local command terminal.
 
 ## Run locally
 
@@ -18,21 +18,10 @@ Create a production build with `npm run build` and serve it locally with `npm ru
 - Update the contact details in `src/data/contact.js` if they change.
 - Replace `public/resume.pdf` when the downloadable résumé changes. No verified certifications are advertised.
 
-JalWatch has no public repository or verified technology details in the supplied workspace, so its card has no source/demo link or stack claim. Cura is labeled as a hackathon MVP and links to Akshat's public fork. AI Fitness Coach links to the public repository where Akshat is listed as a contributor.
+Cura is labeled as a hackathon MVP and links to Akshat's public fork. AI Fitness Coach links to the public repository where Akshat is listed as a contributor. No unverified live demos are advertised.
 
-## React Bits
+## Interface
 
-Dark Veil, Blur Text, and Spotlight Card were installed from the official React Bits registry as JavaScript + CSS source using:
+The planetary scene uses CSS orbital paths, pointer-responsive depth, and the locally bundled `planet` ASCII piece from `ascii.rest`. Its animation respects reduced-motion preferences; the terminal works entirely in the browser and is never required for navigation. Try `help`, `projects`, `about`, `contact`, or `open 01` in the terminal; Escape closes it. Project, skill, achievement, and contact content is maintained in `src/data/`.
 
-```bash
-npx shadcn@latest add \
-  @react-bits/DarkVeil-JS-CSS \
-  @react-bits/BlurText-JS-CSS \
-  @react-bits/SpotlightCard-JS-CSS
-```
-
-The component sources live in `src/components/`. Blur Text powers the staggered hero name reveal, and Spotlight Card provides pointer-following card lighting. Dark Veil is retained as source from the previous hero. The landing-page background uses ascii.rest's locally bundled Tokyo Rain piece at its native aspect ratio; hovering over the art scatters its colored ASCII cells around the pointer. Reduced-motion preferences pause the scene and cursor response.
-
-Projects and Skills use locally bundled ascii.rest pieces, including the animated flow-field beside the cursor-reactive fish flock. Artwork is imported into the build and does not load from ascii.rest at runtime.
-
-The project-card illustrations are original abstract SVG studies, not screenshots of the applications. Their layout, accent colors, and metadata are defined by each project entry in `src/data/projects.js`.
+The four planets are original CSS illustrations, not product screenshots. Project metadata, verified links, and planet colors are defined in `src/data/projects.js`.
