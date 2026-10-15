@@ -1,5 +1,4 @@
 // Public links and technology details are included only when verified.
-// JalWatch has no verified public source or demo linked here.
 export const projects = [
   {
     id: 'answer-sheet-evaluator',
@@ -15,9 +14,26 @@ export const projects = [
     tags: ['Python', 'Flask', 'OpenRouter', 'Qwen3-VL', 'Supabase'],
     art: 'evaluation',
     layout: 'compact',
-    accent: '#b5a0ff',
+    accent: '#8bbcff',
     status: 'Personal project',
     featured: true,
+    caseStudy: {
+      title: 'How an evaluation moves through the system',
+      steps: [
+        {
+          label: 'Input',
+          description: 'Add a question paper, an optional answer key, and answer sheets as PDFs or images.',
+        },
+        {
+          label: 'Evaluate',
+          description: 'Flask sends sheets to Qwen3-VL-32B-Instruct through OpenRouter. Batches of up to 60 are queued and processed sequentially with live progress.',
+        },
+        {
+          label: 'Review',
+          description: 'See marks and detailed feedback, download a PDF report for each completed sheet, and revisit saved evaluation history.',
+        },
+      ],
+    },
     links: [
       { label: 'Source code', href: 'https://github.com/akshatg109/ai-evaluater' },
     ],
@@ -36,7 +52,7 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'FastAPI', 'Python', 'Supabase'],
     art: 'security',
     layout: 'compact',
-    accent: '#84d8d2',
+    accent: '#6ee5de',
     status: 'MVP',
     links: [
       { label: 'Source code', href: 'https://github.com/akshatg109/WebGuard' },
@@ -57,28 +73,14 @@ export const projects = [
     tags: ['Python', 'Flask', 'Supabase', 'Gemini'],
     art: 'fitness',
     layout: 'compact',
-    accent: '#e1b68d',
+    accent: '#f2b47c',
     links: [
       { label: 'Source code', href: 'https://github.com/anshikakapoor0001-source/ai-fitness-coach' },
     ],
   },
   {
-    id: 'jalwatch',
-    number: '04',
-    title: 'JalWatch',
-    category: 'Community · Environment',
-    description:
-      'A platform for reporting and tracking lake-related issues, with a focus on community confirmations and an administrative overview.',
-    tags: ['Issue reporting', 'Community confirmations', 'Admin overview'],
-    art: 'water',
-    layout: 'compact',
-    accent: '#83c5d2',
-    status: 'No public link',
-    links: [],
-  },
-  {
     id: 'cura',
-    number: '05',
+    number: '04',
     title: 'Cura',
     category: 'AI · Wellbeing',
     status: 'Hackathon MVP',
@@ -91,7 +93,7 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'Groq Whisper', 'OpenRouter', 'ElevenLabs', 'Supabase'],
     art: 'voice',
     layout: 'compact',
-    accent: '#c7a0f4',
+    accent: '#c691ff',
     links: [
       { label: 'Source code', href: 'https://github.com/akshatg109/cura' },
     ],
