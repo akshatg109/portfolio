@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'motion/react'
 import AsciiPlanet from './AsciiPlanet.jsx'
+import ProjectDetails from './ProjectDetails.jsx'
 
 const stars = Array.from({ length: 84 }, (_, index) => ({
   left: `${(index * 37 + 11) % 100}%`,
@@ -16,16 +18,19 @@ const orbitalAngles = [-21, 24, -13, 17]
 export default function OrbitScene({
   projects,
   selectedProjectId,
+  selectedProject,
   hoveredProjectId,
   onHoverProject,
   onLeaveProject,
   onSelectProject,
+  onCloseProject,
   registerPlanetButton,
   focusProjectId,
   onProjectFocused,
 }) {
   const sceneRef = useRef(null)
   const [isVisible, setIsVisible] = useState(true)
+  const reduceMotion = useReducedMotion()
   const activeProject = projects.find(project => project.id === (selectedProjectId || hoveredProjectId))
 
   useEffect(() => {
@@ -47,18 +52,22 @@ export default function OrbitScene({
   }, [focusProjectId])
 
   const moveScene = event => {
-    if (event.pointerType !== 'mouse' || !sceneRef.current) return
+    if (reduceMotion || event.pointerType !== 'mouse' || !sceneRef.current) return
 
     const bounds = sceneRef.current.getBoundingClientRect()
     const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2
     const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2
-    sceneRef.current.style.setProperty('--pointer-x', x.toFixed(2))
-    sceneRef.current.style.setProperty('--pointer-y', y.toFixed(2))
+    sceneRef.current.style.setProperty('--pointer-x', Math.max(-1, Math.min(1, x)).toFixed(2))
+    sceneRef.current.style.setProperty('--pointer-y', Math.max(-1, Math.min(1, y)).toFixed(2))
+    sceneRef.current.style.setProperty('--camera-x', `${(y * -3.5).toFixed(2)}deg`)
+    sceneRef.current.style.setProperty('--camera-y', `${(x * 5).toFixed(2)}deg`)
   }
 
   const resetScene = () => {
     sceneRef.current?.style.setProperty('--pointer-x', '0')
     sceneRef.current?.style.setProperty('--pointer-y', '0')
+    sceneRef.current?.style.setProperty('--camera-x', '0deg')
+    sceneRef.current?.style.setProperty('--camera-y', '0deg')
   }
 
   return (
@@ -68,14 +77,15 @@ export default function OrbitScene({
         <span>SELECT A PLANET TO SCAN</span>
       </div>
 
-      <div
-        className={`orbit-stage${isVisible ? '' : ' is-offscreen'}${selectedProjectId ? ' has-selection' : ''}`}
-        ref={sceneRef}
-        onPointerMove={moveScene}
-        onPointerLeave={resetScene}
-        role="group"
-        aria-label="Four orbiting project planets. Select one to view its details."
-      >
+      <div className={`orbit-frame${selectedProject ? ' has-selection' : ''}`}>
+        <div
+          className={`orbit-stage${isVisible ? '' : ' is-offscreen'}${selectedProjectId ? ' has-selection' : ''}`}
+          ref={sceneRef}
+          onPointerMove={moveScene}
+          onPointerLeave={resetScene}
+          role="group"
+          aria-label="Four orbiting project planets. Select one to view its details."
+        >
         {[0, 1, 2].map(layer => (
           <div className={`starfield starfield--${layer + 1}`} aria-hidden="true" key={layer}>
             {stars.filter(star => star.layer === layer).map((star, index) => (
@@ -152,6 +162,14 @@ export default function OrbitScene({
         <div className="ascii-planet-wrap">
           <AsciiPlanet play={isVisible} />
         </div>
+        {selectedProjectId && (
+          <span
+            className="signal-sweep"
+            key={selectedProjectId}
+            style={{ '--planet-accent': activeProject?.accent }}
+            aria-hidden="true"
+          />
+        )}
 
         <div className={`scene-telemetry${selectedProjectId ? ' is-locked' : ''}`} aria-live="polite" aria-atomic="true">
           <span className="scene-telemetry__code" key={selectedProjectId || 'idle'}>
@@ -160,6 +178,15 @@ export default function OrbitScene({
           <span>{activeProject ? activeProject.title : 'AWAITING PLANET SELECTION'}</span>
         </div>
         <div className="scene-coordinate" aria-hidden="true">ORBITAL FIELD <b>01—04</b></div>
+        </div>
+
+        {selectedProject && (
+          <ProjectDetails
+            key={selectedProject.id}
+            project={selectedProject}
+            onClose={onCloseProject}
+          />
+        )}
       </div>
 
       <nav className="planet-index" aria-label="Project index">

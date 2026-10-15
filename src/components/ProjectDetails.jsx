@@ -27,7 +27,7 @@ export default function ProjectDetails({ project, onClose }) {
         <span className="project-detail__number">PROJECT {project.number}</span>
         <span className="project-detail__category"><i aria-hidden="true" />{project.category}</span>
       </div>
-      <h1 id="project-detail-title">{project.title}</h1>
+      <h2 id="project-detail-title">{project.title}</h2>
       {(project.status || project.role) && (
         <p className="project-detail__status">
           {project.status && <span>{project.status}</span>}

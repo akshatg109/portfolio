@@ -1338,7 +1338,7 @@ svg {
   box-shadow: 0 0 9px var(--planet-accent);
 }
 
-.project-detail h1 {
+.project-detail h2 {
   margin: 15px 0 9px;
   font-size: clamp(35px, 4.15vw, 59px);
   font-weight: 600;
@@ -2394,7 +2394,7 @@ svg {
 
   .project-detail { padding-block: 0; }
   .project-detail__meta { margin-top: 15px; font-size: 8px; }
-  .project-detail h1 { margin-top: 13px; font-size: clamp(36px, 9.5vw, 52px); }
+  .project-detail h2 { margin-top: 13px; font-size: clamp(36px, 9.5vw, 52px); }
   .project-detail__description { font-size: 13px; }
   .project-detail__highlights { gap: 7px; margin-block: 15px 17px; }
   .project-detail__highlights li { font-size: 11px; }
@@ -2460,4 +2460,1047 @@ svg {
 
   .reveal { animation: none; }
   .cosmic-event { display: none; }
+}
+
+/* ORBIT 2.0 — wide field, orbital perspective, and editorial profile */
+.space-backdrop {
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(83, 64, 177, 0.2), transparent 37%),
+    radial-gradient(ellipse at 74% 74%, rgba(27, 128, 160, 0.13), transparent 32%),
+    radial-gradient(ellipse at 9% 24%, rgba(63, 92, 169, 0.13), transparent 36%),
+    linear-gradient(137deg, #070a15 0%, #050811 52%, #070b17 100%);
+}
+
+.explore-layout {
+  grid-template-columns: minmax(370px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(20px, 2.6vw, 42px);
+}
+
+.explore-copy {
+  min-height: 0;
+  padding-left: clamp(0px, 1vw, 12px);
+}
+
+.hero-copy {
+  position: relative;
+  max-width: 550px;
+}
+
+.hero-title {
+  font-size: clamp(58px, 4.85vw, 76px);
+}
+
+.orbit-panel {
+  overflow: visible;
+}
+
+.orbit-panel__topline {
+  min-height: 30px;
+  padding-inline: 5px;
+  letter-spacing: 0.14em;
+}
+
+.orbit-frame {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  height: min(68svh, 660px);
+  min-height: 430px;
+  flex: 0 1 auto;
+  place-items: center;
+  overflow: visible;
+  perspective: 1250px;
+  transform-style: preserve-3d;
+}
+
+.orbit-stage {
+  --camera-x: 0deg;
+  --camera-y: 0deg;
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  max-height: 660px;
+  overflow: hidden;
+  border: 0;
+  background:
+    radial-gradient(ellipse at 47% 48%, rgba(83, 99, 203, 0.13), transparent 38%),
+    radial-gradient(ellipse at 62% 34%, rgba(107, 72, 194, 0.13), transparent 43%),
+    radial-gradient(ellipse at 35% 68%, rgba(42, 140, 172, 0.11), transparent 42%),
+    radial-gradient(ellipse at 50% 53%, rgba(7, 11, 24, 0.08), rgba(4, 7, 15, 0.14) 72%);
+  transform: rotateX(calc(5deg + var(--camera-x))) rotateY(var(--camera-y));
+  transform-style: preserve-3d;
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.orbit-stage::before,
+.orbit-stage::after {
+  z-index: 5;
+  width: 17px;
+  height: 17px;
+  border-color: rgba(157, 221, 246, 0.38);
+  filter: drop-shadow(0 0 8px rgba(87, 170, 211, 0.15));
+}
+
+.orbit-stage::before { top: 3%; left: 3%; }
+.orbit-stage::after { right: 3%; bottom: 3%; }
+
+.orbit-stage .nebula--one {
+  top: 10%;
+  left: 7%;
+  width: 62%;
+  height: 36%;
+  filter: blur(45px);
+  opacity: 0.9;
+}
+
+.orbit-stage .nebula--two {
+  right: 0;
+  bottom: 4%;
+  width: 61%;
+  height: 42%;
+  filter: blur(52px);
+  opacity: 0.84;
+}
+
+.orbit-system,
+.planet-tracks {
+  top: 51%;
+  width: min(112%, 900px);
+  height: 98%;
+}
+
+.orbit-system {
+  transform: translate3d(calc(-50% + var(--pointer-x) * 9px), calc(-50% + var(--pointer-y) * 7px), 0);
+}
+
+.orbit-ring {
+  stroke: rgba(175, 213, 246, 0.2);
+  stroke-width: 1.1;
+}
+
+.orbit-ring--4 { stroke: rgba(167, 202, 236, 0.16); }
+
+.orbit-track--1 { translate: 0 0 40px; }
+.orbit-track--2 { translate: 0 0 22px; }
+.orbit-track--3 { translate: 0 0 5px; }
+.orbit-track--4 { translate: 0 0 -20px; }
+
+.planet-button {
+  width: 64px;
+  height: 64px;
+  border-color: rgba(231, 246, 255, 0.85);
+  box-shadow: 0 0 23px color-mix(in srgb, var(--planet-accent), transparent 66%),
+    inset 0 0 13px rgba(255, 255, 255, 0.14);
+}
+
+.planet-button[data-project='webguard'] { width: 70px; height: 70px; }
+.planet-button[data-project='ai-fitness'] { width: 57px; height: 57px; }
+.planet-button[data-project='cura'] { width: 62px; height: 62px; }
+
+.orbit-track.is-selected {
+  z-index: 8;
+  animation-play-state: paused;
+}
+
+.orbit-track.is-selected .planet-anchor {
+  top: 38%;
+  left: 78%;
+  z-index: 8;
+}
+
+.planet-button.is-selected,
+.planet-button.is-selected:hover,
+.planet-button.is-selected:focus-visible {
+  z-index: 9;
+  scale: 1.56;
+  animation: none;
+  rotate: 0deg;
+  border-color: color-mix(in srgb, var(--planet-accent), white 27%);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--planet-accent), transparent 25%),
+    0 0 100px color-mix(in srgb, var(--planet-accent), transparent 57%),
+    inset 0 0 16px rgba(255, 255, 255, 0.19);
+}
+
+.planet-button.is-selected .planet-tooltip { opacity: 0; visibility: hidden; }
+
+.orbit-stage.has-selection .ascii-planet-wrap,
+.orbit-stage.has-selection .stellar-core {
+  opacity: 0.24;
+  scale: 0.84;
+  filter: saturate(0.74) blur(1px);
+  transition: opacity 350ms ease, scale 350ms ease, filter 350ms ease;
+}
+
+.stellar-core {
+  width: 42%;
+  max-width: 360px;
+}
+
+.ascii-planet-wrap {
+  z-index: 4;
+  width: min(56%, 410px);
+  aspect-ratio: 1.35;
+  filter: drop-shadow(0 0 18px rgba(117, 204, 248, 0.64));
+}
+
+.ascii-planet-wrap::before {
+  position: absolute;
+  z-index: -1;
+  width: 67%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(179, 228, 255, 0.19);
+  border-radius: 50%;
+  box-shadow: 0 0 38px rgba(90, 147, 228, 0.14), inset 0 0 25px rgba(106, 187, 225, 0.08);
+  content: '';
+}
+
+.scene-coordinate {
+  top: 6%;
+  right: 5%;
+}
+
+.scene-telemetry {
+  bottom: 6%;
+  left: 5%;
+}
+
+.signal-sweep {
+  position: absolute;
+  z-index: 7;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 36%;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--planet-accent), transparent 93%) 30%, color-mix(in srgb, var(--planet-accent), transparent 74%) 50%, transparent);
+  filter: blur(4px);
+  pointer-events: none;
+  transform: translateX(-190%) skewX(-15deg);
+  animation: planetary-scan 850ms cubic-bezier(0.18, 0.76, 0.22, 1) both;
+}
+
+.orbit-stage.has-selection .orbit-ring:not(.is-highlighted) { opacity: 0.18; }
+.orbit-stage.has-selection .orbit-ring.is-highlighted {
+  stroke: color-mix(in srgb, var(--planet-accent), white 6%);
+  stroke-width: 1.45;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--planet-accent), transparent 10%));
+}
+
+.orbit-stage.has-selection .scene-telemetry { opacity: 0; }
+
+.planet-index {
+  gap: 3px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(157, 190, 224, 0.14);
+}
+
+.planet-index__item {
+  min-height: 52px;
+  gap: 10px;
+  padding: 6px 8px;
+  border: 0;
+  border-top: 2px solid color-mix(in srgb, var(--planet-accent), transparent 78%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--planet-accent), transparent 97%), transparent 80%);
+}
+
+.planet-index__item:hover,
+.planet-index__item:focus-visible,
+.planet-index__item.is-active {
+  border-top-color: var(--planet-accent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--planet-accent), transparent 91%), transparent 92%);
+}
+
+.planet-index__item.is-active {
+  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--planet-accent), transparent 30%);
+}
+
+.orbit-frame.has-selection .project-detail {
+  position: absolute;
+  z-index: 10;
+  top: auto;
+  right: auto;
+  bottom: 5%;
+  left: 3.5%;
+  width: min(420px, 48%);
+  max-width: none;
+  max-height: 86%;
+  overflow: auto;
+  padding: clamp(17px, 2vw, 23px);
+  border: 1px solid color-mix(in srgb, var(--planet-accent), transparent 50%);
+  background:
+    linear-gradient(133deg, rgba(11, 18, 31, 0.985), rgba(7, 12, 23, 0.975)),
+    color-mix(in srgb, var(--planet-accent), transparent 94%);
+  box-shadow: 0 23px 72px rgba(0, 0, 0, 0.46), 0 0 54px color-mix(in srgb, var(--planet-accent), transparent 91%);
+  backdrop-filter: blur(18px);
+  scrollbar-color: rgba(145, 186, 216, 0.38) transparent;
+}
+
+.orbit-frame.has-selection .project-detail h2 {
+  font-size: clamp(25px, 2.35vw, 34px);
+}
+
+.orbit-frame.has-selection .project-detail__description { font-size: 12px; }
+.orbit-frame.has-selection .project-detail__highlights { margin-block: 13px; }
+.orbit-frame.has-selection .project-detail__highlights li { font-size: 10px; }
+.orbit-frame.has-selection .project-detail__technologies { padding-top: 10px; }
+.orbit-frame.has-selection .project-detail__links { margin-top: 13px; }
+
+/* A spherical, keyboard-operable skill map and compact mission timeline. */
+.profile-view,
+.contact-view {
+  padding-block: 17px 18px;
+}
+
+.profile-composition {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(8px, 1.4vh, 16px);
+  padding-top: 4px;
+}
+
+.profile-upper {
+  display: grid;
+  min-height: 360px;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(25px, 4vw, 64px);
+}
+
+.profile-main h1 {
+  margin-block: 10px 13px;
+  font-size: clamp(54px, 5.55vw, 78px);
+  line-height: 0.94;
+}
+
+.profile-intro { max-width: 455px; font-size: 13px; }
+
+.education-line {
+  position: relative;
+  min-height: 68px;
+  margin-top: 21px;
+  padding: 10px 13px;
+  border: 0;
+  border-left: 2px solid rgba(118, 228, 239, 0.68);
+  background: linear-gradient(90deg, rgba(72, 161, 185, 0.1), transparent 88%);
+}
+
+.education-line:hover {
+  transform: translateX(3px);
+  border-color: var(--cyan);
+  background: linear-gradient(90deg, rgba(72, 161, 185, 0.16), transparent 88%);
+  box-shadow: none;
+}
+
+.education-line__icon {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  color: #c2f8ff;
+}
+
+.education-line__orbit {
+  position: relative;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  place-items: center;
+  border: 1px solid rgba(161, 189, 255, 0.38);
+  border-radius: 50%;
+  color: #c8c2ff;
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.education-line__orbit::before,
+.education-line__orbit::after {
+  position: absolute;
+  inset: -5px 6px;
+  border: 1px solid rgba(157, 187, 255, 0.28);
+  border-radius: 50%;
+  content: '';
+  transform: rotate(38deg);
+}
+
+.education-line__orbit::after {
+  inset: 6px -5px;
+  border-color: rgba(118, 228, 239, 0.33);
+  transform: rotate(-38deg);
+}
+
+.skill-constellation {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: min(100%, 440px);
+  min-height: 340px;
+  aspect-ratio: 800 / 460;
+  isolation: isolate;
+  perspective: 1000px;
+}
+
+.skill-constellation__drawing {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.skill-orbit {
+  fill: none;
+  stroke: rgba(161, 192, 235, 0.17);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 6;
+}
+
+.skill-orbit--inner { stroke: rgba(118, 228, 239, 0.14); stroke-dasharray: 1 4; }
+
+.skill-link {
+  fill: none;
+  stroke: rgba(133, 177, 217, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  transition: stroke 220ms ease, stroke-width 220ms ease, filter 220ms ease;
+}
+
+.skill-link.is-lit {
+  stroke: var(--skill-link-color, rgba(171, 234, 255, 0.9));
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 4px rgba(116, 220, 243, 0.52));
+}
+
+.skill-sphere__atmosphere {
+  fill: rgba(101, 133, 231, 0.07);
+  filter: blur(13px);
+}
+
+.skill-sphere__body {
+  stroke: rgba(196, 239, 255, 0.54);
+  stroke-width: 0.8;
+  filter: drop-shadow(0 0 13px rgba(112, 191, 242, 0.23));
+  transform-origin: 400px 226px;
+  animation: skill-sphere-turn 22s linear infinite;
+}
+
+.skill-sphere__mesh {
+  fill: none;
+  stroke: url(#skill-sphere-meridian);
+  stroke-width: 1;
+  opacity: 0.78;
+  transform-origin: 400px 226px;
+  animation: skill-mesh-drift 27s ease-in-out infinite alternate;
+}
+
+.skill-sphere__mesh ellipse:nth-child(2n) { opacity: 0.47; }
+.skill-sphere__mesh .skill-sphere__meridian { stroke-width: 1.5; opacity: 0.86; }
+
+.skill-sphere__rim {
+  fill: none;
+  stroke: rgba(203, 249, 255, 0.62);
+  stroke-width: 1.1;
+  filter: drop-shadow(0 0 7px rgba(118, 228, 239, 0.45));
+}
+
+.skill-constellation__core {
+  fill: #dffcff;
+  filter: drop-shadow(0 0 7px rgba(142, 234, 255, 0.9));
+}
+
+.skill-node-point {
+  fill: #7595b3;
+  stroke: rgba(187, 229, 255, 0.42);
+  stroke-width: 1;
+  transition: fill 180ms ease, filter 180ms ease;
+}
+
+.skill-node-point.is-lit {
+  fill: #c9faff;
+  filter: drop-shadow(0 0 5px #75e9ef);
+}
+
+.skill-constellation__nodes { position: absolute; z-index: 2; inset: 0; }
+
+.skill-node {
+  position: absolute;
+  display: flex;
+  width: 29%;
+  min-height: 57px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 7px 9px;
+  border: 1px solid transparent;
+  background: linear-gradient(110deg, rgba(7, 12, 23, 0.72), rgba(7, 12, 23, 0.15));
+  color: var(--ink);
+  text-align: left;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.skill-node--programming { top: 2%; left: 0; }
+.skill-node--frontend { top: 2%; right: 0; text-align: right; }
+.skill-node--backend { bottom: 10%; left: 0; }
+.skill-node--ai { right: 0; bottom: 10%; text-align: right; }
+.skill-node--workflow { bottom: -1%; left: 50%; width: 31%; transform: translateX(-50%); text-align: center; }
+
+.skill-node__heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 7px;
+}
+
+.skill-node--frontend .skill-node__heading,
+.skill-node--ai .skill-node__heading { justify-content: flex-end; }
+.skill-node--workflow .skill-node__heading { justify-content: center; }
+
+.skill-node__index {
+  color: var(--skill-accent);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.skill-node__heading strong {
+  color: #dce8fa;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.skill-node__items {
+  color: #92a8c2;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.skill-node:hover,
+.skill-node:focus-visible,
+.skill-node.is-lit {
+  z-index: 3;
+  border-color: color-mix(in srgb, var(--skill-accent), transparent 62%);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--skill-accent), #080d1a 91%), rgba(7, 12, 23, 0.76));
+  box-shadow: 0 7px 24px rgba(0, 0, 0, 0.24), 0 0 24px color-mix(in srgb, var(--skill-accent), transparent 89%);
+  transform: translateY(-2px);
+}
+
+.skill-node--workflow:hover,
+.skill-node--workflow:focus-visible,
+.skill-node--workflow.is-lit { transform: translate(-50%, -2px); }
+
+.skill-node:focus-visible { outline-color: var(--skill-accent); }
+
+.skill-constellation__hint {
+  position: absolute;
+  right: 2%;
+  bottom: -2%;
+  z-index: 3;
+  margin: 0;
+  color: #8399b2;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-align: right;
+}
+
+.skill-constellation--programming .skill-link--programming,
+.skill-constellation--frontend .skill-link--frontend,
+.skill-constellation--backend .skill-link--backend,
+.skill-constellation--ai .skill-link--ai,
+.skill-constellation--workflow .skill-link--workflow { --skill-link-color: rgba(196, 237, 255, 0.95); }
+
+.mission-log {
+  align-self: stretch;
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(150, 184, 218, 0.21);
+  border-left: 0;
+}
+
+.mission-log__heading {
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.mission-log__heading h2 {
+  font-size: 21px;
+}
+
+.mission-log__heading > span { font-size: 8px; }
+
+.mission-log ol {
+  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mission-log ol::before {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  left: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(118, 228, 239, 0.34), rgba(157, 190, 224, 0.11) 62%, rgba(168, 143, 255, 0.3));
+  content: '';
+}
+
+.mission-entry {
+  min-width: 0;
+  min-height: 116px;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 8px;
+  padding: 13px 11px 0 0;
+  border-top: 0;
+}
+
+.mission-entry + .mission-entry { border-left: 1px solid rgba(157, 190, 224, 0.11); padding-left: 12px; }
+
+.mission-entry::before {
+  top: -2px;
+  left: 7px;
+  width: 7px;
+  height: 7px;
+  border-color: rgba(118, 228, 239, 0.62);
+  background: #08101c;
+}
+
+.mission-entry:hover { transform: translateY(-2px); background: linear-gradient(180deg, rgba(118, 228, 239, 0.045), transparent 76%); }
+.mission-entry:hover::before { transform: scale(1.12); }
+.mission-entry__meta { gap: 5px; font-size: 8px; }
+.mission-entry__meta strong { color: #c7e9ef; }
+.mission-entry h3 { margin-top: 3px; font-size: 13px; }
+.mission-entry p { font-size: 10px; }
+
+/* Contact channels orbit a pointer-reactive transmission portal. */
+.contact-layout {
+  grid-template-columns: minmax(340px, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(24px, 4vw, 66px);
+}
+
+.contact-copy h1 { font-size: clamp(54px, 6vw, 82px); }
+
+.contact-signal {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  height: min(64svh, 570px);
+  min-height: 490px;
+  align-items: flex-end;
+  padding-bottom: 14px;
+}
+
+.transmission-portal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(100%, 720px);
+  height: 76%;
+  min-height: 340px;
+  pointer-events: auto;
+  transform: translateX(-50%);
+}
+
+.transmission-portal svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 14px rgba(90, 179, 220, 0.12));
+  transform: perspective(900px) rotateX(var(--portal-rotation-x, 0deg)) rotateY(var(--portal-rotation-y, 0deg));
+  transform-origin: 50% 50%;
+  transition: transform 280ms ease-out;
+}
+
+.portal-field { fill: url(#portal-well); opacity: 0.84; }
+
+.portal-track {
+  fill: none;
+  stroke: url(#portal-edge);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 7;
+  opacity: 0.56;
+  transform-origin: 360px 185px;
+}
+
+.portal-track--one { animation: portal-orbit 46s linear infinite; }
+.portal-track--two { stroke-dasharray: 46 14 3 12; opacity: 0.42; animation: portal-orbit-reverse 58s linear infinite; }
+.portal-track--three { stroke-dasharray: 1 8; opacity: 0.3; animation: portal-orbit 68s linear infinite; }
+
+.portal-halo {
+  fill: rgba(101, 171, 242, 0.24);
+  opacity: 0.42;
+  animation: portal-breathe 6.5s ease-in-out infinite alternate;
+}
+
+.portal-rim {
+  fill: none;
+  stroke: url(#portal-edge);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 5px rgba(129, 218, 246, 0.47));
+}
+
+.portal-rim--inner { stroke: rgba(177, 204, 255, 0.42); stroke-width: 0.7; }
+.portal-mouth { stroke: rgba(184, 239, 255, 0.42); stroke-width: 0.7; }
+
+.portal-grid {
+  fill: none;
+  stroke: rgba(162, 224, 247, 0.32);
+  stroke-width: 0.7;
+  opacity: 0.62;
+  animation: portal-grid-shift 13s ease-in-out infinite alternate;
+}
+
+.portal-signal-arc {
+  fill: none;
+  stroke: rgba(171, 233, 255, 0.78);
+  stroke-width: 1.4;
+  stroke-dasharray: 0.42 0.58;
+  stroke-dashoffset: 0.42;
+  filter: drop-shadow(0 0 4px rgba(126, 227, 255, 0.74));
+  animation: portal-transmit 3.2s ease-in-out infinite;
+}
+
+.portal-transmission {
+  fill: none;
+  stroke: rgba(179, 247, 255, 0.92);
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-origin: 360px 185px;
+  filter: drop-shadow(0 0 7px rgba(126, 227, 255, 0.8));
+  animation: portal-send 820ms cubic-bezier(0.16, 0.72, 0.24, 1) both;
+}
+
+.portal-beacon { fill: #b9f6ff; filter: drop-shadow(0 0 5px rgba(124, 226, 255, 0.92)); }
+.portal-beacon--one { animation: beacon-blink 4.5s ease-in-out infinite; }
+.portal-beacon--two { animation: beacon-blink 5.5s ease-in-out -2s infinite; }
+.portal-beacon--three { animation: beacon-blink 6s ease-in-out -3.4s infinite; }
+
+.transmission-portal__caption {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  color: rgba(161, 194, 222, 0.8);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.contact-destinations {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.contact-destinations__label {
+  grid-column: 1 / -1;
+  margin: 0 0 1px;
+  color: #a7bad0;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.13em;
+}
+
+.contact-destination {
+  --channel-accent: var(--cyan);
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 126px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 11px 10px;
+  border-color: rgba(161, 201, 233, 0.23);
+  background: linear-gradient(145deg, rgba(9, 17, 31, 0.88), rgba(7, 13, 24, 0.75));
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2), inset 0 1px rgba(218, 244, 255, 0.035);
+  backdrop-filter: blur(13px);
+}
+
+.contact-destination:hover,
+.contact-destination:focus-visible {
+  transform: translateY(-5px);
+  border-color: rgba(118, 228, 239, 0.7);
+  background: linear-gradient(145deg, rgba(17, 35, 52, 0.96), rgba(8, 18, 31, 0.94));
+  box-shadow: 0 14px 36px rgba(30, 138, 166, 0.13), inset 0 1px rgba(218, 244, 255, 0.08);
+}
+
+.contact-destinations > .contact-destination:nth-of-type(2) { --channel-accent: #a6cfff; }
+.contact-destinations > .contact-destination:nth-of-type(3) { --channel-accent: #c3a6ff; }
+.contact-destination:nth-of-type(1) { --channel-accent: #7de8e8; }
+.contact-destination:hover .contact-destination__icon,
+.contact-destination:focus-visible .contact-destination__icon {
+  transform: rotate(-6deg) scale(1.06);
+  border-color: var(--channel-accent);
+  color: var(--channel-accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--channel-accent), transparent 75%);
+}
+
+.contact-destination.is-selected {
+  border-color: var(--channel-accent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--channel-accent), #08111e 88%), rgba(8, 18, 31, 0.96));
+  box-shadow: 0 12px 36px color-mix(in srgb, var(--channel-accent), transparent 87%),
+    inset 0 0 0 1px color-mix(in srgb, var(--channel-accent), transparent 82%);
+}
+
+.contact-destination.is-selected .contact-destination__icon {
+  transform: rotate(-6deg) scale(1.06);
+  border-color: var(--channel-accent);
+  color: var(--channel-accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--channel-accent), transparent 74%);
+}
+
+.contact-destination.is-selected .contact-destination__body strong,
+.contact-destination.is-selected > svg { color: #f0fbff; }
+
+.contact-destination__icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(118, 228, 239, 0.27);
+  background: rgba(118, 228, 239, 0.035);
+  transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.contact-destination__body { width: 100%; gap: 3px; }
+.contact-destination__body small { font-size: 7px; letter-spacing: 0.06em; }
+.contact-destination__body strong { font-size: 10px; line-height: 1.35; }
+.contact-destination > svg { position: absolute; top: 14px; right: 12px; width: 13px; height: 13px; }
+
+.contact-coordinate {
+  grid-column: 1 / -1;
+  padding-top: 4px;
+  color: #b5c8dc;
+  font-size: 8px;
+}
+
+.contact-back { margin-top: 5px; }
+
+@keyframes planetary-scan {
+  0% { opacity: 0; transform: translateX(-190%) skewX(-15deg); }
+  15% { opacity: 0.82; }
+  100% { opacity: 0; transform: translateX(190%) skewX(-15deg); }
+}
+
+@keyframes skill-sphere-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes skill-mesh-drift {
+  from { transform: rotateY(-17deg) rotateX(3deg); }
+  to { transform: rotateY(17deg) rotateX(-3deg); }
+}
+
+@keyframes portal-orbit { to { transform: rotate(360deg); } }
+@keyframes portal-orbit-reverse { to { transform: rotate(-360deg); } }
+@keyframes portal-breathe { from { opacity: 0.23; transform: scale(0.92); } to { opacity: 0.53; transform: scale(1.05); } }
+@keyframes portal-grid-shift { from { opacity: 0.28; transform: translateX(-3px); } to { opacity: 0.66; transform: translateX(3px); } }
+@keyframes portal-transmit { 0%, 100% { stroke-dashoffset: 0.42; opacity: 0.5; } 48% { opacity: 1; } 66% { stroke-dashoffset: -0.58; opacity: 0.72; } }
+@keyframes beacon-blink { 0%, 100% { opacity: 0.34; } 48% { opacity: 0.92; } 60% { opacity: 0.45; } }
+@keyframes portal-send { from { opacity: 0.94; transform: scale(0.62); } to { opacity: 0; transform: scale(1.75); } }
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .explore-layout { grid-template-columns: minmax(350px, 0.85fr) minmax(0, 1.15fr); gap: 18px; }
+  .hero-title { font-size: clamp(53px, 4.65vw, 65px); }
+  .planet-index__item { padding-inline: 5px; }
+  .planet-index__item strong { font-size: 9px; }
+  .profile-upper { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .skill-node,
+  .skill-node--workflow { width: 34%; }
+  .contact-layout { grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr); gap: 24px; }
+  .contact-copy h1 { font-size: clamp(52px, 5.3vw, 66px); }
+  .contact-destination { padding-inline: 8px; }
+  .contact-destination__body strong { font-size: 9px; }
+}
+
+@media (max-height: 740px) and (min-width: 981px) {
+  .orbit-frame { height: min(65svh, 550px); min-height: 390px; }
+  .orbit-stage { min-height: 390px; }
+  .profile-view,
+  .contact-view { padding-block: 10px 12px; }
+  .profile-upper { min-height: 330px; }
+  .skill-constellation { min-height: 310px; }
+  .mission-entry { min-height: 100px; }
+  .contact-signal { height: min(61svh, 490px); min-height: 430px; }
+}
+
+@media (max-width: 980px) {
+  .explore-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .explore-copy { padding-left: 0; }
+  .hero-title { font-size: clamp(56px, 8vw, 78px); }
+  .orbit-panel { min-height: 0; }
+  .orbit-frame { height: min(78vw, 640px); min-height: 370px; }
+  .orbit-stage { min-height: 370px; }
+  .profile-view,
+  .contact-view { height: auto; min-height: calc(100svh - 150px); }
+  .profile-composition { gap: 18px; padding-top: 16px; }
+  .profile-upper { min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .profile-main { max-width: 750px; }
+  .profile-main h1 { font-size: clamp(54px, 7vw, 76px); }
+  .skill-constellation { width: min(100%, 790px); height: auto; min-height: 420px; justify-self: center; }
+  .mission-log { margin-top: 2px; }
+  .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 35px 14px; }
+  .contact-copy { max-width: 720px; }
+  .contact-signal { width: min(100%, 780px); height: min(68vw, 550px); min-height: 470px; justify-self: center; }
+  .contact-back { margin-top: 4px; }
+}
+
+@media (max-width: 640px) {
+  .explore-layout { gap: 22px; padding-block: 34px 28px; }
+  .hero-title { font-size: clamp(48px, 12.7vw, 67px); }
+  .orbit-panel__topline { font-size: 7px; }
+  .orbit-frame { display: block; height: auto; min-height: 0; }
+  .orbit-stage { height: clamp(300px, 90vw, 390px); min-height: 300px; }
+  .orbit-frame.has-selection { display: flex; flex-direction: column; gap: 12px; }
+  .orbit-frame.has-selection .orbit-stage { flex: 0 0 auto; }
+  .orbit-frame.has-selection .project-detail {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding: 15px;
+  }
+  .orbit-frame.has-selection .project-detail h2 { font-size: clamp(28px, 8.5vw, 38px); }
+  .orbit-system,
+  .planet-tracks { width: 106%; height: 88%; }
+  .orbit-track--1 { translate: 0 0 15px; }
+  .orbit-track--2 { translate: 0 0 8px; }
+  .orbit-track--3 { translate: 0 0 0; }
+  .orbit-track--4 { translate: 0 0 -7px; }
+  .planet-button { width: 48px; height: 48px; }
+  .planet-button[data-project='webguard'] { width: 53px; height: 53px; }
+  .planet-button[data-project='ai-fitness'] { width: 44px; height: 44px; }
+  .planet-button[data-project='cura'] { width: 47px; height: 47px; }
+  .planet-button.is-selected,
+  .planet-button.is-selected:hover,
+  .planet-button.is-selected:focus-visible { scale: 1.32; }
+  .ascii-planet-wrap { width: min(62%, 300px); }
+  .planet-index { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; border: 0; }
+  .planet-index__item { min-height: 46px; border: 1px solid rgba(157, 190, 224, 0.16); background: rgba(8, 14, 26, 0.54); }
+  .planet-index__item:hover,
+  .planet-index__item:focus-visible,
+  .planet-index__item.is-active { border-color: color-mix(in srgb, var(--planet-accent), transparent 42%); }
+
+  .profile-view,
+  .contact-view { padding-block: 22px 25px; }
+  .profile-composition { gap: 18px; padding-top: 24px; }
+  .profile-main h1,
+  .contact-copy h1 { font-size: clamp(45px, 11.7vw, 64px); }
+  .profile-intro,
+  .contact-copy > p:not(.eyebrow) { font-size: 13px; }
+  .education-line { margin-top: 17px; }
+  .education-line strong { font-size: 11px; }
+  .education-line__orbit { width: 37px; height: 37px; }
+
+  .skill-constellation {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 800 / 500;
+  }
+  .skill-constellation__drawing { opacity: 0.56; }
+  .skill-constellation__nodes {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px 0 30px;
+  }
+  .skill-node,
+  .skill-node--programming,
+  .skill-node--frontend,
+  .skill-node--backend,
+  .skill-node--ai,
+  .skill-node--workflow {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 65px;
+    transform: none;
+    padding: 8px;
+    border-color: rgba(157, 190, 224, 0.16);
+    background: rgba(5, 9, 18, 0.88);
+    text-align: left;
+  }
+  .skill-node:hover,
+  .skill-node:focus-visible,
+  .skill-node.is-lit,
+  .skill-node--workflow:hover,
+  .skill-node--workflow:focus-visible,
+  .skill-node--workflow.is-lit { transform: translateY(-1px); }
+  .skill-node--frontend .skill-node__heading,
+  .skill-node--ai .skill-node__heading,
+  .skill-node--workflow .skill-node__heading { justify-content: flex-start; }
+  .skill-node__heading { gap: 5px; }
+  .skill-node__heading strong { font-size: 10px; }
+  .skill-node__items { font-size: 8px; }
+  .skill-constellation__hint { right: 0; bottom: 0; font-size: 7px; }
+
+  .mission-log { padding-top: 14px; }
+  .mission-log__heading { align-items: flex-end; }
+  .mission-log__heading h2 { font-size: 22px; }
+  .mission-log__heading > span { max-width: 130px; text-align: right; }
+  .mission-log ol { grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: 4px; }
+  .mission-log ol::before { top: 5px; bottom: 6px; left: 8px; width: 1px; height: auto; background: linear-gradient(180deg, rgba(118, 228, 239, 0.38), rgba(157, 190, 224, 0.12) 60%, rgba(168, 143, 255, 0.3)); }
+  .mission-entry,
+  .mission-entry + .mission-entry { min-height: 0; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; padding: 11px 0 13px 17px; border: 0; }
+  .mission-entry::before { top: 14px; left: 1px; width: 7px; height: 7px; }
+  .mission-entry__meta { font-size: 8px; }
+  .mission-entry h3 { font-size: 13px; }
+  .mission-entry p { font-size: 11px; }
+
+  .contact-layout { gap: 20px; padding-block: 26px 10px; }
+  .contact-copy h1 { margin-block: 13px 15px; }
+  .contact-resume { margin-top: 18px; }
+  .contact-signal { display: block; width: 100%; height: auto; min-height: 0; padding: 292px 0 0; }
+  .transmission-portal { top: 0; height: 292px; min-height: 0; }
+  .transmission-portal__caption { top: 3%; right: 1%; font-size: 7px; }
+  .contact-destinations { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  .contact-destinations__label { margin-bottom: 3px; }
+  .contact-destination {
+    display: grid;
+    min-height: 68px;
+    grid-template-columns: 38px minmax(0, 1fr) 16px;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+  }
+  .contact-destination__icon { width: 36px; height: 36px; }
+  .contact-destination__body small { font-size: 7px; }
+  .contact-destination__body strong { font-size: 11px; }
+  .contact-destination > svg { position: static; width: 14px; height: 14px; }
+  .contact-coordinate { padding-top: 5px; }
+  .contact-back { margin-top: 9px; }
+}
+
+@media (max-width: 360px) {
+  .skill-node { padding-inline: 6px; }
+  .skill-node__heading strong { font-size: 9px; }
+  .skill-node__items { font-size: 7px; }
+  .contact-signal { padding-top: 265px; }
+  .transmission-portal { height: 265px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-stage { transform: none !important; will-change: auto; }
+  .skill-sphere__body,
+  .skill-sphere__mesh,
+  .portal-track,
+  .portal-halo,
+  .portal-grid,
+  .portal-signal-arc,
+  .portal-beacon,
+  .portal-transmission { animation: none !important; }
+  .signal-sweep { display: none; }
 }

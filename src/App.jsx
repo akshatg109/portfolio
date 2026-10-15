@@ -5,7 +5,6 @@ import ContactPanel from './components/ContactPanel.jsx'
 import HeroIntro from './components/HeroIntro.jsx'
 import OrbitScene from './components/OrbitScene.jsx'
 import ProfilePanel from './components/ProfilePanel.jsx'
-import ProjectDetails from './components/ProjectDetails.jsx'
 import TerminalPanel from './components/TerminalPanel.jsx'
 import { contact } from './data/contact.js'
 import { projects } from './data/projects.js'
@@ -157,21 +156,17 @@ export default function App() {
       <section className="explore-view" aria-label="Explore projects">
         <div className="explore-layout content-frame">
           <div className="explore-copy">
-            <AnimatePresence mode="wait" initial={false}>
-              {selectedProject ? (
-                <ProjectDetails key={selectedProject.id} project={selectedProject} onClose={closeProjectDetails} />
-              ) : (
-                <HeroIntro key="hero-intro" onExplore={() => selectProject(projects[0])} />
-              )}
-            </AnimatePresence>
+            <HeroIntro onExplore={() => selectProject(projects[0])} />
           </div>
           <OrbitScene
             projects={projects}
             selectedProjectId={selectedProject?.id}
+            selectedProject={selectedProject}
             hoveredProjectId={hoveredProjectId}
             onHoverProject={setHoveredProjectId}
             onLeaveProject={() => setHoveredProjectId(null)}
             onSelectProject={selectProject}
+            onCloseProject={closeProjectDetails}
             focusProjectId={focusProjectId}
             onProjectFocused={() => setFocusProjectId(null)}
             registerPlanetButton={(projectId, node) => {
